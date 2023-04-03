@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('tb_masyarakat', function (Blueprint $table) {
             $table->id('id_user');
-            $table->String('nama_lengkap');
-            $table->String('alamat');
+            $table->String('nama_lengkap')->nullable();
+            $table->String('alamat')->nullable();
             $table->String('username')->unique();
             $table->String('password');
-            $table->String('no_telp');
+            $table->String('no_telp')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -2,26 +2,26 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Petugas;
 use Closure;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class PetugasAccess
 {
-    public function handle($request, Closure $next, ...$levels)
+    public function handle(Request $request, Closure $next, ...$levels)
     {
-        if (auth()->check()) {
-            $user_level = auth()->user()->id_level;
-            if (in_array($user_level, $levels)) {
-                // User has the required level of access
-                return $next($request);
-            } else {
-                // User does not have the required level of access
-                $data['user_level'] = $user_level;
-                return redirect()->route('login')->with('error', 'You do not have permission to access for this page.')->with($data);
-            }
-        } else {
-            return redirect()->route('login');
-        }
+        // if (auth()->check() && auth()->user()->level == 'admin') {
+        //     return $next($request);
+        // }
+
+        // return response()->json(['You do not have permission to access for this page.']);
+        // /* return response()->view('errors.check-permission'); */
+
+        // if (in_array($request->user()->level, $levels)) {
+        //     return $next($request);
+        // }
+        // return response()->json(['You do not have permission to access for this page.']);
+        dd(auth()->user()->level);
     }
 }

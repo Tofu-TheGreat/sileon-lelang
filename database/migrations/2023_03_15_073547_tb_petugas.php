@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('tb_petugas', function (Blueprint $table) {
             $table->id('id_petugas');
-            $table->string('nama_petugas', 255);
+            $table->string('nama_petugas', 255)->nullable();
             $table->string('username', 255)->unique();
             $table->string('password', 255);
-            $table->unsignedBigInteger('id_level');
+            $table->enum('level', ['admin', 'petugas']);
             $table->rememberToken();
             $table->timestamps();
         });

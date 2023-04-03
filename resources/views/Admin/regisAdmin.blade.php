@@ -30,8 +30,8 @@
                     <input type="password" name="confirm_password" class="form-control" id="confirmpasswordForLogin">
                 </div>
                 <div class="mb-3">
-                    <select class="form-select" hidden name="id_level" aria-label="Default select example">
-                        <option value="1">Administrator</option>
+                    <select class="form-select" hidden name="level" aria-label="Default select example">
+                        <option value="admin">Administrator</option>
                     </select>
                 </div>
                 <div class="mb-3 form-check">

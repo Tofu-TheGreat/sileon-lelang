@@ -21,7 +21,7 @@
                     <input type="password" name="password" class="form-control" id="passwordForLogin">
                 </div>
                 <div class="mb-3">
-                    <select class="form-select" name="id_level" disabled aria-label="Default select example">
+                    <select class="form-select" name="id_level" hidden aria-label="Default select example">
                         <option value="2">Petugas</option>
                     </select>
                 </div>

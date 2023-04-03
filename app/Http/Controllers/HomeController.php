@@ -29,11 +29,24 @@ class HomeController extends Controller
 
         return view('Admin.home_content', compact('id', 'lelang'))->with($data);
     }
+    public function petugas_home()
+    {
+        $data = [
+            'title' => 'Home',
+            'subTitle' => ''
+        ];
+        $id = session()->get('datap');
+        $lelang = DB::table('tb_lelang')
+            ->join('tb_barang', 'tb_barang.id_barang', '=', 'tb_lelang.id_barang')
+            ->get();
+
+
+        return view('Petugas.home_content', compact('id', 'lelang'))->with($data);
+    }
 
     public function data_petugastable()
     {
         $petugas = DB::table('tb_petugas')
-            ->join('tb_level', 'tb_level.id_level', '=', 'tb_petugas.id_level')
             ->get();
         $level = DB::table('tb_level')
             ->get();
@@ -92,5 +105,21 @@ class HomeController extends Controller
         $barang = DB::table('tb_barang')
             ->get();
         return view('Admin.table_lelang', ['lelang' => $lelang, 'petugas' => $petugas, 'barang' => $barang])->with($data);
+    }
+    public function lelang_petugas()
+    {
+        $data = [
+            'title' => 'Home',
+            'subTitle' => 'Lelang'
+        ];
+        $lelang = DB::table('tb_lelang')
+            ->join('tb_barang', 'tb_barang.id_barang', '=', 'tb_lelang.id_barang')
+            ->join('tb_petugas', 'tb_petugas.id_petugas', '=', 'tb_lelang.id_petugas')
+            ->get();
+        $petugas = DB::table('tb_petugas')
+            ->get();
+        $barang = DB::table('tb_barang')
+            ->get();
+        return view('Petugas.table_lelang', ['lelang' => $lelang, 'petugas' => $petugas, 'barang' => $barang])->with($data);
     }
 }

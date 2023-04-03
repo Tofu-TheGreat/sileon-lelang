@@ -2,38 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Petugas;
+use App\Models\Lelang;
 use App\Models\Barang;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
-class BarangController extends Controller
+class PetugasController extends Controller
 {
-    public function barang()
-    {
-        $data = [
-            'title' => 'Login',
-            'subTitle' => 'Tambah Barang'
-        ];
-        return view("Admin.tambahdataBarang")->with($data);
-    }
-
     public function delete_barang($id_barang)
     {
         $barang = Barang::where('id_barang', $id_barang)
             ->delete();
-        return redirect()->route('table.databarang');
-    }
-
-    public function ubah_barang($id_barang)
-    {
-        $barang = Barang::select('*')
-            ->where('id_barang', $id_barang)
-            ->get();
-        $data = [
-            'title' => 'Login',
-            'subTitle' => ''
-        ];
-        return view('Admin.ubah_barang', ['barang' => $barang])->with($data);
+        return redirect()->route('table.databarang.petugas');
     }
 
     public function update_barang(Request $request)
@@ -62,16 +42,8 @@ class BarangController extends Controller
         }
 
 
-        return redirect()->route('table.databarang');
-    }
-    public function tableBarang()
-    {
-        $data = [
-            'title' => 'Home',
-            'subTitle' => 'Data Barang'
-        ];
-        $barang = Barang::all();
-        return view("Admin.table_barang", compact('barang'))->with($data);
+
+        return redirect()->route('table.databarang.petugas');
     }
 
     public function barang_action(Request $request)
@@ -102,7 +74,58 @@ class BarangController extends Controller
         ]);
         $product->save(); // Finally, save the record.
 
+        return redirect()->route("table.databarang.petugas")->with($data);
+    }
+    public function tableBarang_petugas()
+    {
+        $data = [
+            'title' => 'Home',
+            'subTitle' => 'Data Barang'
+        ];
+        $barang = Barang::all();
+        return view("Petugas.table_barang", compact('barang'))->with($data);
+    }
+    public function buka_lelang(Request $request)
+    {
+        $request->validate([
+            'id_barang' => 'required',
+            'tgl_lelang' => 'required|date',
+            'harga_akhir' => 'required',
+            'id_petugas' => 'required',
+            'status' => 'required'
+        ]);
 
-        return redirect()->route("table.databarang")->with($data);
+        $lelang = new Lelang([
+            'id_barang' => $request->id_barang,
+            'tgl_lelang' => $request->tgl_lelang,
+            'harga_akhir' => $request->harga_akhir,
+            'id_petugas' => $request->id_petugas,
+            'status' => $request->status
+        ]);
+        $lelang->save();
+        return redirect()->route('table.lelang.petugas');
+    }
+
+    public function delete_lelang($id_lelang)
+    {
+        $lelang = Lelang::where('id_lelang', $id_lelang)
+            ->delete();
+        return redirect()->route('table.lelang.petugas');
+    }
+
+
+
+    public function update_lelang(Request $request)
+    {
+        $lelang = Lelang::where('id_lelang', $request->id_lelang)
+            ->update([
+                'id_barang' => $request->id_barang,
+                'tgl_lelang' => $request->tgl_lelang,
+                'harga_akhir' => $request->harga_akhir,
+                'id_petugas' => $request->id_petugas,
+                'status' => $request->status
+            ]);
+
+        return redirect()->route('table.lelang.petugas');
     }
 }

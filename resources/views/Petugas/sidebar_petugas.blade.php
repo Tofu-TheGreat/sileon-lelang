@@ -11,35 +11,20 @@
                 </li>
 
                 <li class="sidebar-item {{ $subTitle === '' ? 'active' : '' }}">
-                    <a class="sidebar-link" href="{{ route('Admin.index') }}">
+                    <a class="sidebar-link" href="{{ route('Petugas.index') }}">
                         <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Home</span>
                     </a>
                 </li>z
                 <li class="sidebar-header">
                     Tables
                 </li>
-                <li class="sidebar-item {{ $subTitle === 'Data_petugas' ? 'active' : '' }}">
-                    <a class="sidebar-link" href="{{ route('table.datapetugas') }}">
-                        <i class="bi bi-diagram-2 align-middle"></i> <span class="align-middle">Data Petugas</span>
-                    </a>
-                </li>
-                <li class="sidebar-item {{ $subTitle === 'Data_level' ? 'active' : '' }}">
-                    <a class="sidebar-link" href="{{ route('table.datalevel') }}">
-                        <i class="bi bi-diagram-2 align-middle"></i> <span class="align-middle">Data Level</span>
-                    </a>
-                </li>
-                <li class="sidebar-item }">
-                    <a class="sidebar-link" href="">
-                        <i class="bi bi-diagram-2 align-middle"></i> <span class="align-middle">Data Masyarakat</span>
-                    </a>
-                </li>
                 <li class="sidebar-item  {{ $subTitle === 'Data Barang' ? 'active' : '' }}">
-                    <a class="sidebar-link" href="{{ route('table.databarang') }}">
+                    <a class="sidebar-link" href="{{ route('table.databarang.petugas') }}">
                         <i class="bi bi-diagram-2 align-middle"></i> <span class="align-middle">Data Barang</span>
                     </a>
                 </li>
                 <li class="sidebar-item {{ $subTitle === 'Lelang' ? 'active' : '' }}">
-                    <a class="sidebar-link" href="{{ route('table.lelang') }}">
+                    <a class="sidebar-link" href="{{ route('table.lelang.petugas') }}">
                         <i class="bi bi-diagram-2 align-middle"></i> <span class="align-middle">Data Lelang</span>
                     </a>
                 </li>

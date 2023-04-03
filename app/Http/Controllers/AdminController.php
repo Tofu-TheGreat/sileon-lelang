@@ -31,12 +31,12 @@ class AdminController extends Controller
             'nama_petugas' => $request->nama_petugas,
             'username' => $request->username,
             'password' => Hash::make($request->password),
-            'id_level' => $request->id_level,
+            'level' => $request->level,
         ]);
         if (auth()->attempt(array('username' => $request->username, 'password' => $request->password))) {
-            if (auth()->user()->id_level == '1') {
+            if (auth()->user()->level == 'admin') {
                 return redirect()->route('login');
-            } else if (auth()->user()->id_level == '2') {
+            } else if (auth()->user()->level == 'petugas') {
                 return redirect()->route('table.datapetugas');
             }
         } else {
@@ -52,6 +52,14 @@ class AdminController extends Controller
             'subTitle' => 'Login'
         ];
         return view("Admin.loginAdmin")->with($data);
+    }
+    public function login_petugas()
+    {
+        $data = [
+            'title' => 'Login',
+            'subTitle' => 'Login'
+        ];
+        return view("Petugas.loginPetugas")->with($data);
     }
     public function regis()
     {
@@ -79,10 +87,10 @@ class AdminController extends Controller
 
 
         if (auth()->attempt(array('username' => $request->username, 'password' => $request->password))) {
-            if (auth()->user()->id_level == 1) {
+            if (auth()->user()->level == 'admin') {
                 return redirect()->intended('admin_home')->with($data);
-            } else if (auth()->user()->id_level == 2) {
-                return view('Petugas.home_content')->with($data);
+            } else if (auth()->user()->level == 'petugas') {
+                return redirect()->intended('petugas_home')->with($data);
             }
             //  else {
             //     return redirect()->route('home');
@@ -91,5 +99,12 @@ class AdminController extends Controller
             return redirect()->route('login')
                 ->with('error', 'Email-Address And Password Are Wrong.');
         }
+    }
+
+    public function delete_petugas($id_petugas)
+    {
+        $petugas = Petugas::where('id_petugas', $id_petugas)
+            ->delete();
+        return redirect()->route('table.datapetugas');
     }
 }

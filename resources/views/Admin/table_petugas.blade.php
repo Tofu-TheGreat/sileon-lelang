@@ -10,6 +10,7 @@
                             <th>Nama Petugas</th>
                             <th>Username</th>
                             <th>Jabatan</th>
+                            <th>Opsi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -18,6 +19,10 @@
                                 <td>{{ $item->nama_petugas }}</td>
                                 <td>{{ $item->username }}</td>
                                 <td>{{ $item->level }}</td>
+
+                                <td>
+                                    <a href="/delete_petugas/{{ $item->id_petugas }}" class="btn btn-danger">Delete</a>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
