@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LelangController;
 use Illuminate\Support\Facades\Route;
@@ -26,9 +27,7 @@ Route::get('/user', function () {
     return view('Users.index',);
 });
 
-Route::get('/banner', function () {
-    return view('Users.banner',);
-});
+Route::get('/banner', [Controller::class, 'lelang_page'])->name('banner');
 
 Route::get('/detil', function () {
     return view('Users.detil',);
