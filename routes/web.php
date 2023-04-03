@@ -63,10 +63,8 @@ Route::get('/delete_petugas/{id_petugas}', [AdminController::class, 'delete_petu
 
 Route::get('petugas_home', [HomeController::class, 'petugas_home'])->name('Petugas.index');
 
-Route::middleware(['auth', 'cek-akses:admin'])->group(function () {
-    // routes that require admin access
-});
-Route::get('admin_home', [HomeController::class, 'admin_home'])->name('Admin.index');
+
+Route::get('admin_home', [HomeController::class, 'admin_home'])->name('Admin.index')->middleware('admin');
 
 Route::group(['middleware' => ['auth', 'cekAkses:admin']], function () {
 });
