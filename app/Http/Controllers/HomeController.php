@@ -25,6 +25,8 @@ class HomeController extends Controller
         $lelang = DB::table('tb_lelang')
             ->join('tb_barang', 'tb_barang.id_barang', '=', 'tb_lelang.id_barang')
             ->get();
+
+
         return view('Admin.home_content', compact('id', 'lelang'))->with($data);
     }
 

@@ -56,7 +56,7 @@ Route::get('/delete_barang/{id_barang}', [BarangController::class, 'delete_baran
 
 // Route::get('admin_home', [HomeController::class, 'admin_home'])->middleware('cekAksesLogin:1')->name('Admin.index');
 
-Route::get('admin_home', [HomeController::class, 'admin_home'])->name('Admin.index');
 
+Route::get('admin_home', [HomeController::class, 'admin_home'])->name('Admin.index');
 Route::middleware(['cek-akses:1'])->group(function () {
 });

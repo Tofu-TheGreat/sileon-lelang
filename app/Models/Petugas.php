@@ -16,10 +16,8 @@ class Petugas extends Authenticatable
     protected $fillable = ['nama_petugas', 'username', 'password', 'id_level'];
     protected $table = 'tb_petugas';
     protected $hidden = ['password', 'rememberToken'];
-    protected function type(): Attribute
-    {
-        return new Attribute(
-            get: fn ($value) =>  ["user", "super-admin", "manager"][$value],
-        );
-    }
+
+    protected $casts = [
+        'id_level' => 'integer',
+    ];
 }

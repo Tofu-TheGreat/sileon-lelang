@@ -76,12 +76,12 @@ class AdminController extends Controller
             'check' => 'required'
         ]);
 
-        $auth = $request->id_level;
+
 
         if (auth()->attempt(array('username' => $request->username, 'password' => $request->password))) {
-            if (auth()->user()->id_level == '1') {
-                return redirect()->intended('admin_home')->with($data, $auth);
-            } else if (auth()->user()->id_level == '2') {
+            if (auth()->user()->id_level == 1) {
+                return redirect()->intended('admin_home')->with($data);
+            } else if (auth()->user()->id_level == 2) {
                 return view('Petugas.home_content')->with($data);
             }
             //  else {
