@@ -2,16 +2,21 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\Petugas;
 use Closure;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
-class PetugasAccess
+class AdminAccess
 {
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
+     * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
+     */
     public function handle(Request $request, Closure $next, ...$levels)
     {
-        if (auth()->check() && auth()->user()->level == 'petugas') {
+        if (auth()->user()->level == 'admin') {
             return $next($request);
         }
 

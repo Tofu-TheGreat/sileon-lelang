@@ -86,12 +86,13 @@ class AdminController extends Controller
 
 
 
-        if (auth()->attempt(array('username' => $request->username, 'password' => $request->password))) {
-            if (auth()->user()->level == 'admin') {
-                return redirect()->intended('admin_home')->with($data);
-            } else if (auth()->user()->level == 'petugas') {
-                return redirect()->intended('petugas_home')->with($data);
-            }
+        if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
+            $request->session()->regenerate();
+            return redirect()->intended('admin_home')->with($data);
+            // if (auth()->user()->level == 'admin') {
+            // } else if (auth()->user()->level == 'petugas') {
+            //     return redirect()->intended('petugas_home')->with($data);
+            // }
             //  else {
             //     return redirect()->route('home');
             // }
