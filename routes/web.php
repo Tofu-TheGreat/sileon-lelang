@@ -37,6 +37,12 @@ Route::get('/detil', function () {
 Route::get('/penawaran', function () {
     return view('Users.penawaran',);
 });
+Route::get('/lupa_password', function () {
+    return view('Users.lupa_password',);
+});
+Route::get('/verifikasi', function () {
+    return view('Users.verifikasi',);
+});
 
 Auth::routes();
 

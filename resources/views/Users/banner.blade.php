@@ -25,7 +25,7 @@
             </div>
           </div>
           <!-- Carousel -->
-          <center><h2>Carousel</h2></center>
+          {{-- <center><h2>Carousel</h2></center> --}}
           <div id="Produk" class="carousel slide" style="height: 300px;">
             <div class="carousel-inner h-100">
                 <div class="carousel-item h-100 active">
@@ -33,12 +33,12 @@
                     <div class="col-4 h-100 pt-4" style="border-right:2px solid #f0f0f0">
                       <div class="d-flex w-100" style="height: 87%;">
                         <div class="h-100 mx-2" style="width: 60%;">
-                        <img class="w-100 h-100" src="{{ asset('image/assets/55.png') }}" alt=""></div>
+                        <a href="/detil"><img class="w-100 h-100" src="{{ asset('image/assets/55.png') }}" alt=""></a></div>
                         <div class="h-100" style="width: 40%;">
                             <div class="" style="height: 48%;">
-                              <img class="w-100 h-100" src="{{ asset('image/assets/55.png') }}" alt=""></div>
+                              <a href="/detil"><img class="w-100 h-100" src="{{ asset('image/assets/55.png') }}" alt=""></a></div>
                             <div class="mt-2" style="height: 48%;">
-                              <img class="w-100 h-100" src="{{ asset('image/assets/55.png') }}" alt=""></div>
+                              <a href="/detil"><img class="w-100 h-100" src="{{ asset('image/assets/55.png') }}" alt=""></a></div>
                         </div>
                       </div>
                         <span class="h5 pt-2 position-relative" style="color: #000000; top: 100px;">Nama Barang</span>
@@ -46,25 +46,24 @@
                     <div class="col-4 h-100 pt-4" style="border-right:2px solid #f0f0f0">
                       <div class="d-flex w-100" style="height: 87%;">
                         <div class="h-100 mx-2" style="width: 60%;">
-                        <img class="w-100 h-100" src="{{ asset('image/assets/55.png') }}" alt=""></div>
+                            <a href="/detil"><img class="w-100 h-100" src="{{ asset('image/assets/55.png') }}" alt=""></a></div>
                         <div class="h-100" style="width: 40%;">
                             <div class="" style="height: 48%;">
-                              <img class="w-100 h-100" src="{{ asset('image/assets/55.png') }}" alt=""></div>
+                              <a href="/detil"><img class="w-100 h-100" src="{{ asset('image/assets/55.png') }}" alt=""></a></div>
                             <div class="mt-2" style="height: 48%;">
-                              <img class="w-100 h-100" src="{{ asset('image/assets/55.png') }}" alt=""></div>
+                              <a href="/detil"><img class="w-100 h-100" src="{{ asset('image/assets/55.png') }}" alt=""></a></div>
                         </div>
                       </div>
-                        <span class="h5 pt-2 position-relative" style="color: #000000; top: 100px;">Nama Barang</span>
                     </div>
                     <div class="col-4 h-100 pt-4" style="border-right:2px solid #f0f0f0">
                       <div class="d-flex w-100" style="height: 87%;">
                         <div class="h-100 mx-2" style="width: 60%;">
-                        <img class="w-100 h-100" src="{{ asset('image/assets/55.png') }}" alt=""></div>
+                        <a href="/detil"><img class="w-100 h-100" src="{{ asset('image/assets/55.png') }}" alt=""></a></div>
                         <div class="h-100" style="width: 40%;">
                             <div class="" style="height: 48%;">
-                              <img class="w-100 h-100" src="{{ asset('image/assets/55.png') }}" alt=""></div>
+                              <a href="/detil"><img class="w-100 h-100" src="{{ asset('image/assets/55.png') }}" alt=""></a></div>
                             <div class="mt-2" style="height: 48%;">
-                              <img class="w-100 h-100" src="{{ asset('image/assets/55.png') }}" alt=""></div>
+                              <a href="/detil"><img class="w-100 h-100" src="{{ asset('image/assets/55.png') }}" alt=""></a></div>
                         </div>
                       </div>
                         <span class="h5 pt-2 position-relative" style="color: #000000; top: 100px;">Nama Barang</span>
@@ -124,7 +123,7 @@
           </div>
         </div>
       </div>
-      <center><h3>TAB</h3></center>
+      {{-- <center><h3>TAB</h3></center>
       <div class="row row-cols-1 row-cols-md-3 g-4 mt-3 ms-3">
         <div class="col-md-3">
           <div class="card" style="width: 18rem;">
@@ -184,7 +183,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 @endsection
