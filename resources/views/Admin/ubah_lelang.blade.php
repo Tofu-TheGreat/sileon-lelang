@@ -5,13 +5,16 @@
         <div class="card-body">
             <form action="{{ route('update.lelang') }}" method="POST">
                 @csrf
-                <h3 class="my-4">Update Barang Here.</h3>
+                <h3 class="my-4">Update Lelang Here.</h3>
                 @foreach ($lelang as $lelangs)
                     <input type="hidden" name="id_lelang" value="{{ $lelangs->id_lelang }}">
                     <div class="mb-3">
                         <select class="form-select" name="id_barang" aria-label="Default select example">
                             @foreach ($databarang as $item)
-                                <option value="{{ $item->id_barang }}">{{ $item->nama_barang }}</option>
+                                <option value="{{ $item->id_barang }}"
+                                    {{ $lelangs->id_barang == $item->id_barang ? 'Selected' : '' }}>
+                                    {{ $item->nama_barang }}
+                                </option>
                             @endforeach
                         </select>
                     </div>
@@ -29,14 +32,16 @@
                     <div class="mb-3">
                         <select class="form-select" name="id_petugas" aria-label="Default select example">
                             @foreach ($datapetugas as $petugas)
-                                <option value="{{ $petugas->id_petugas }}">{{ $petugas->nama_petugas }}</option>
+                                <option value="{{ $petugas->id_petugas }}"
+                                    {{ $lelangs->id_petugas == $petugas->id_petugas ? 'Selected' : '' }}>
+                                    {{ $petugas->nama_petugas }}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="mb-3">
                         <select class="form-select" name="status" aria-label="Default select example">
-                            <option value="dibuka">DIBUKA</option>
-                            <option value="ditutup">DITUTUP</option>
+                            <option value="dibuka" {{ $lelangs->status == 'dibuka' ? 'Selected' : '' }}>DIBUKA</option>
+                            <option value="ditutup" {{ $lelangs->status == 'ditutup' ? 'Selected' : '' }}>DITUTUP</option>
                         </select>
                     </div>
                 @endforeach

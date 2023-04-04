@@ -28,8 +28,8 @@
                         <i class="bi bi-diagram-2 align-middle"></i> <span class="align-middle">Data Level</span>
                     </a>
                 </li>
-                <li class="sidebar-item }">
-                    <a class="sidebar-link" href="">
+                <li class="sidebar-item {{ $subTitle === 'Masyarakat' ? 'active' : '' }}">
+                    <a class="sidebar-link" href="{{ route('table.datauser') }}">
                         <i class="bi bi-diagram-2 align-middle"></i> <span class="align-middle">Data Masyarakat</span>
                     </a>
                 </li>

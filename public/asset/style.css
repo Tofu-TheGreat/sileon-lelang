@@ -1,0 +1,40 @@
+* {
+	font-family: "Montserrat", sans-serif;
+	margin: 0px;
+	padding: 0px;
+}
+
+.navbar {
+	background-color: #e9a834;
+	width: 100%;
+}
+
+.row {
+	height: 1000px;
+}
+
+.lupa:hover {
+	border-bottom: 1px solid black;
+}
+
+.side1 {
+	margin-top: 100px;
+}
+.side2 {
+	margin-top: 100px;
+}
+
+@media (max-width: 600px) {
+	* {
+		overflow: scroll;
+	}
+	.row {
+		height: auto;
+	}
+	.side1 {
+		margin-top: auto;
+	}
+	.side2 {
+		margin-top: auto;
+	}
+}

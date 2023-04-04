@@ -5,6 +5,7 @@ use App\Http\Controllers\BarangController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LelangController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,6 +33,8 @@ Route::get('/banner', [Controller::class, 'lelang_page'])->name('banner');
 Route::get('/detil', function () {
     return view('Users.detil',);
 });
+
+Route::get('/penawaran/{id_lelang}', [Controller::class, 'penawaran_page'])->name('penawaran');
 
 Route::get('/penawaran', function () {
     return view('Users.penawaran',);
@@ -76,7 +79,14 @@ Route::post('update_barang', [BarangController::class, 'update_barang'])->name('
 Route::get('/delete_lelang/{id_lelang}', [LelangController::class, 'delete_lelang'])->name('delete.lelang');
 Route::get('/delete_barang/{id_barang}', [BarangController::class, 'delete_barang'])->name('delete.barang');
 
+Route::post('bid', [LelangController::class, 'bid'])->name('action.bid');
 
+Route::get('register', [UserController::class, 'register'])->name('register.user');
+Route::get('login', [UserController::class, 'login'])->name('login.user');
+Route::post('register', [UserController::class, 'action_register'])->name('register.action');
+Route::post('login', [UserController::class, 'action_login'])->name('loginuser.action');
+
+Route::get('data_masyarakat', [HomeController::class, 'user_table'])->name('table.datauser');
 // Route::get('admin_home', [HomeController::class, 'admin_home'])->middleware('cekAksesLogin:1')->name('Admin.index');
 
 Route::get('admin_home', [HomeController::class, 'admin_home'])->name('Admin.index');

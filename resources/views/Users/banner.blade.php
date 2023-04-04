@@ -1,24 +1,24 @@
 @extends('layout.main')
 @section('konten')
-<div lass="container" style="background-color: #E9A834;">
-    <div class="pb-3">
-        <form class="d-flex" action="" method="get"           >
-              <input class="form-control px-5 mx-5 mt-5" type="search" name="katakunci"
-              placeholder="Cari barang impianmu..." aria-label="Search">
-          </form>
+    <div lass="container" style="background-color: #E9A834;">
+        <div class="pb-3">
+            <form class="d-flex" action="" method="get">
+                <input class="form-control px-5 mx-5 mt-5" type="search" name="katakunci" placeholder="Cari barang impianmu..."
+                    aria-label="Search">
+            </form>
         </div>
-      </div>
+    </div>
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">
-          <h4 style="margin:auto">BANNER</h4>
+            <h4 style="margin:auto">BANNER</h4>
         </div>
-      </nav>
+    </nav>
 
-      <!-- ProdukLelang -->
-      <div class="row mx-0" style="background-color: white;">
+    <!-- ProdukLelang -->
+    <div class="row mx-0" style="background-color: white;">
         <div class="d-flex flex-column w-100 pt-4 pb-2">
           <div class="d-flex justify-content-between w-100 px-4">
-            <h4 style="color: #888;">Produk Lelang</h4>
+            <h4 style="color: #888;">Produk Terlaris</h4>
             <div class="d-flex align-items-center" style="color: #E9A834;">
               <span >Lihat Semua</span>
               <span class="h4 mb-0"></span>
@@ -122,68 +122,47 @@
             </button>
           </div>
         </div>
-      </div>
-      {{-- <center><h3>TAB</h3></center>
-      <div class="row row-cols-1 row-cols-md-3 g-4 mt-3 ms-3">
-        <div class="col-md-3">
-          <div class="card" style="width: 18rem;">
-            <img src="https://tse1.mm.bing.net/th?id=OIP.PVn_1l2DS9m-VvZl0mx8rAHaHa&pid=Api&P=0" class="card-img-top" alt="...">
-            <div class="ms-3">
-            <h4 class="card-title">sepatu</h4>
-            <h5 class="card-title">IDR 500K</h5>
-          </div>
-            <div class="card-body">
+    </div>
+    <div class="card mt-4 mx-4 shadow-sm">
+        <div class="card-body">
+            <h3 class="mt-3 mb-5 d-flex justify-content-center">
+                <div class="badge bg-danger">Ongoing Lelang</div>
+            </h3>
+            <div class="row row-cols-1 row-cols-md-3 g-4 mt-3 ms-3">
+                @foreach ($lelang as $item)
+                    <div class="col-md-3">
+                        <div class="card mt-3" style="width: 18rem;">
+                            <img src="../image_save/{{ $item->gambar }}" height="200px" width="100px"
+                                class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title text-dark">{{ $item->nama_barang }}</h5>
+                                <h5 class="card-title">Rp.{{ $item->harga_akhir }}</h5>
+                                <p class="card-text">{{ $item->deskripsi_barang }}</p>
+                                @if ($item->status == 'dibuka')
+                                    <span class="badge text-bg-success">Dibuka</span>
+                                @elseif ($item->status == 'ditutup')
+                                    <span class="badge text-bg-secondary">Ditutup</span>
+                                @endif
+
+                            </div>
+                            <a href="/penawaran/{{ $item->id_lelang }}" class="stretched-link"></a>
+                        </div>
+                    </div>
+                @endforeach
             </div>
-            <div class="card-footer">
-              <small class="text-muted"></small>
-            </div>
-          </div>
+
         </div>
-        <div class="col-md-3">
-            <div class="card" style="width: 18rem;">
-              <img src="https://tse1.mm.bing.net/th?id=OIP.PVn_1l2DS9m-VvZl0mx8rAHaHa&pid=Api&P=0" class="card-img-top" alt="...">
-              <div class="ms-3">
-              <h4 class="card-title">sepatu</h4>
-              <h5 class="card-title">IDR 500K</h5>
-            </div>
-              <div class="card-body">
-              </div>
-              <div class="card-footer">
-                <small class="text-muted"></small>
-              </div>
-            </div>
-          </div>
-        <div class="col-md-3">
-          <div class="card" style="width: 18rem;">
-            <img src="https://tse1.mm.bing.net/th?id=OIP.PVn_1l2DS9m-VvZl0mx8rAHaHa&pid=Api&P=0" class="card-img-top" alt="...">
-            <div class="ms-3">
-            <h4 class="card-title">sepatu</h4>
-            <h5 class="card-title">IDR 500K</h5>
-          </div>
-            <div class="card-body">
-              <p class="card-text"></p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted"></small>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="card" style="width: 18rem;">
-            <img src="https://tse1.mm.bing.net/th?id=OIP.PVn_1l2DS9m-VvZl0mx8rAHaHa&pid=Api&P=0" class="card-img-top" alt="...">
-            <div class="ms-3">
-            <h4 class="card-title">sepatu</h4>
-            <h5 class="card-title">IDR 500K</h5>
-          </div>
-            <div class="card-body">
-              <p class="card-text"></p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted"></small>
-            </div>
-          </div>
-        </div>
-      </div> --}}
+    </div>
+
+
+
+
+
+
+    {{-- <center><h3>TAB</h3></center>
+       --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
+    </script>
 @endsection

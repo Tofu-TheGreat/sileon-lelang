@@ -42,6 +42,10 @@ return [
             'driver' => 'session',
             'provider' => 'petugas',
         ],
+        'users' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
     ],
 
     /*
@@ -65,6 +69,10 @@ return [
         'petugas' => [
             'driver' => 'eloquent',
             'model' => App\Models\Petugas::class,
+        ],
+        'users' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\User::class,
         ],
 
         // 'users' => [
@@ -91,6 +99,12 @@ return [
     'passwords' => [
         'petugas' => [
             'provider' => 'petugas',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'users' => [
+            'provider' => 'users',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

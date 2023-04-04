@@ -18,7 +18,9 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = ['nama_petugas', 'username', 'password', 'id_level'];
-    protected $table = 'tb_petugas';
-    protected $hidden = ['password', 'rememberToken'];
+    protected $table = 'tb_masyarakat';
+    protected $primaryKey = 'username';
+    protected $fillable = [
+        'nama_lengkap', 'alamat', 'username', 'password', 'no_telp'
+    ];
 }

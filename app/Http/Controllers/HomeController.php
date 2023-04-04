@@ -122,4 +122,15 @@ class HomeController extends Controller
             ->get();
         return view('Petugas.table_lelang', ['lelang' => $lelang, 'petugas' => $petugas, 'barang' => $barang])->with($data);
     }
+
+    public function user_table()
+    {
+        $data = [
+            'title' => 'Home',
+            'subTitle' => 'Masyarakat'
+        ];
+        $user = DB::table('tb_masyarakat')
+            ->get();
+        return view('Admin.table_user', compact('user'))->with($data);
+    }
 }

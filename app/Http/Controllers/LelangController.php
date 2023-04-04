@@ -53,6 +53,7 @@ class LelangController extends Controller
     {
         $lelang = Lelang::select('*')
             ->where('id_lelang', $id_lelang)
+            ->join('tb_barang', 'tb_barang.id_barang', '=', 'tb_lelang.id_barang')
             ->get();
         $databarang = Barang::all();
         $datapetugas = Petugas::all();
@@ -75,5 +76,14 @@ class LelangController extends Controller
             ]);
 
         return redirect()->route('table.lelang');
+    }
+
+    public function bid(Request $request)
+    {
+        $lelang = Lelang::where('id_lelang', $request->id_lelang)
+            ->update([
+                'harga_akhir' => $request->harga_akhir,
+            ]);
+        return redirect()->intended('/banner');
     }
 }
