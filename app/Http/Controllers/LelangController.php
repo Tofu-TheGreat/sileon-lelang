@@ -53,6 +53,7 @@ class LelangController extends Controller
     {
         $lelang = Lelang::select('*')
             ->where('id_lelang', $id_lelang)
+            ->join('tb_barang', 'tb_barang.id_barang', '=', 'tb_lelang.id_barang')
             ->get();
         $databarang = Barang::all();
         $datapetugas = Petugas::all();

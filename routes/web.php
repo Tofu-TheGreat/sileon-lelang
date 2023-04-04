@@ -83,6 +83,7 @@ Route::get('login', [UserController::class, 'login'])->name('login.user');
 Route::post('register', [UserController::class, 'action_register'])->name('register.action');
 Route::post('login', [UserController::class, 'action_login'])->name('loginuser.action');
 
+Route::get('data_masyarakat', [HomeController::class, 'user_table'])->name('table.datauser');
 // Route::get('admin_home', [HomeController::class, 'admin_home'])->middleware('cekAksesLogin:1')->name('Admin.index');
 
 Route::get('admin_home', [HomeController::class, 'admin_home'])->name('Admin.index');

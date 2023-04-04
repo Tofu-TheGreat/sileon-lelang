@@ -174,7 +174,8 @@
                 @foreach ($lelang as $item)
                     <div class="col-md-3">
                         <div class="card mt-3" style="width: 18rem;">
-                            <img src="../image_save/{{ $item->gambar }}" class="card-img-top" alt="...">
+                            <img src="../image_save/{{ $item->gambar }}" height="200px" width="100px"
+                                class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title text-dark">{{ $item->nama_barang }}</h5>
                                 <h5 class="card-title">Rp.{{ $item->harga_akhir }}</h5>
