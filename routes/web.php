@@ -48,6 +48,12 @@ Route::get('/verifikasi', function () {
 Route::get('/histori', function () {
     return view('Users.histori',);
 });
+Route::get('/login', function () {
+    return view('Users.login',);
+});
+Route::get('/register', function () {
+    return view('Users.register',);
+});
 
 Auth::routes();
 
