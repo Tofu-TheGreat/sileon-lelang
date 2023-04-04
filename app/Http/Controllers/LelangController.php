@@ -76,4 +76,13 @@ class LelangController extends Controller
 
         return redirect()->route('table.lelang');
     }
+
+    public function bid(Request $request)
+    {
+        $lelang = Lelang::where('id_lelang', $request->id_lelang)
+            ->update([
+                'harga_akhir' => $request->harga_akhir,
+            ]);
+        return redirect()->intended('/banner');
+    }
 }
