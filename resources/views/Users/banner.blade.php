@@ -18,7 +18,7 @@
       <div class="row mx-0" style="background-color: white;">
         <div class="d-flex flex-column w-100 pt-4 pb-2">
           <div class="d-flex justify-content-between w-100 px-4">
-            <h4 style="color: #888;">Produk Terlaris</h4>
+            <h4 style="color: #888;">Produk Lelang</h4>
             <div class="d-flex align-items-center" style="color: #E9A834;">
               <span >Lihat Semua</span>
               <span class="h4 mb-0"></span>

@@ -42,6 +42,9 @@ Route::get('/lupa_password', function () {
 Route::get('/verifikasi', function () {
     return view('Users.verifikasi',);
 });
+Route::get('/histori', function () {
+    return view('Users.histori',);
+});
 
 Auth::routes();
 
