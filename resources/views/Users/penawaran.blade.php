@@ -10,7 +10,7 @@
                                 <div class="row g-0">
                                     <div class="col-md-4">
                                         <img src="../image_save/{{ $item->gambar }}" class="img rounded" alt="item">
-                                        <i class="bi bi-caret-left-fill">Kembali Ke <a href="/user">Home</a></i>
+                                        <i class="bi bi-caret-left-fill">Kembali Ke <a href="/banner">Home</a></i>
                                     </div>
                                 </div>
                             </div>
@@ -115,7 +115,7 @@
                             <div class="row g-0">
                                 <div class="col-md-4">
                                     <img src="../image_save/{{ $item->gambar }}" class="img rounded" alt="item">
-                                    <i class="bi bi-caret-left-fill">Kembali Ke <a href="/user">Home</a></i>
+                                    <i class="bi bi-caret-left-fill">Kembali Ke <a href="/banner">Home</a></i>
                                 </div>
                             </div>
                         </div>
