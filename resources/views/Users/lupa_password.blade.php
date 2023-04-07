@@ -1,11 +1,19 @@
-@extends('layout.main')
-@section('konten')
-<div class="row">
-  <div class="col-md">
-    <div class="row">
-        <div class="row d-flex justify-content-center mt-5">
-            <img src="{{ asset('image/logo.png') }}" style="width: 200px; height: 200px;" class="logoo">
+@extends('layout.main2')
+@section('konten2')
+<header class="site-header d-flex flex-column justify-content-center align-items-center">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-12 col-12 text-center">
+
+                <h2 class="mb-0">Tentang SiLeOn</h2>
+            </div>
         </div>
+    </div>
+</header>
+<section class="about-section section-padding" id="section_2">
+<div class="container">
+    <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
             <div class="card my-5 px-2 mx-5 py-5 shadow-lg">
@@ -42,8 +50,6 @@
         </div>
         <div class="col-md-2"></div>
     </div>
-  </div>
 </div>
-<div class="container">
-</div>
+</section>
 @endsection

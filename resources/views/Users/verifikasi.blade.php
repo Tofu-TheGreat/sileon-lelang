@@ -1,5 +1,18 @@
-@extends('layout.main')
-@section('konten')
+@extends('layout.main2')
+@section('konten2')
+<header class="site-header d-flex flex-column justify-content-center align-items-center">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-12 col-12 text-center">
+
+                <h2 class="mb-0">Tentang SiLeOn</h2>
+            </div>
+
+        </div>
+    </div>
+</header>
+<section class="about-section section-padding" id="section_2">
 <div class="container">
     <div class="row">
                 <div class="col-md-2"></div>
@@ -34,4 +47,5 @@
         </div>
     </div>
 </div>
+</section>
 @endsection

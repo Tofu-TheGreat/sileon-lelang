@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg">
     <div class="container">
-        <a class="navbar-brand me-lg-5 me-0" href="index.html">
+        <a class="navbar-brand me-lg-5 me-0" href="/user">
             <img src="images/logo-sileon.png" class="logo-image img-fluid" alt="SiLeOn" style="width: 200px;" >
         </a>
 
@@ -27,12 +27,12 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="about.html">About</a>
+                    <a class="nav-link" href="/about">About</a>
                 </li>
 
 
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact</a>
+                    <a class="nav-link" href="/contact">Contact</a>
                 </li>
             </ul>
 
