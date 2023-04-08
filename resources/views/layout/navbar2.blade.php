@@ -25,12 +25,12 @@
                 <li class="nav-item">
                     <a class="nav-link active" href="index.html">Home</a>
                 </li>
-
                 <li class="nav-item">
                     <a class="nav-link" href="/about">About</a>
                 </li>
-
-
+                <li class="nav-item">
+                    <a class="nav-link" href="/histori">Histori</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/contact">Contact</a>
                 </li>

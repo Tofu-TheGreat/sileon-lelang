@@ -65,6 +65,9 @@ Route::get('/contact', function () {
 Route::get('/detail-laptop', function () {
     return view('Users.detail-laptop',);
 });
+Route::get('/detail-sepatu', function () {
+    return view('Users.detail-sepatu',);
+});
 
 
 Auth::routes();

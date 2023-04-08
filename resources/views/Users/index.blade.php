@@ -196,7 +196,7 @@
 
             <div class="col-lg-4 col-md-8 col-12 mb-4 mb-lg-0">
                 <div class="custom-block custom-block-overlay">
-                    <a href="detail-page.html" class="custom-block-image-wrap">
+                    <a href="/detail-sepatu" class="custom-block-image-wrap">
                         <img src="images/barang/shoes.webp"
                             class="custom-block-image img-fluid" alt="">
                     </a>
@@ -234,7 +234,7 @@
 
             <div class="col-lg-4 col-md-8 col-12 mb-4 mb-lg-0">
                 <div class="custom-block custom-block-overlay">
-                    <a href="detail-laptop.html" class="custom-block-image-wrap">
+                    <a href="/detail-laptop" class="custom-block-image-wrap">
                         <img src="images/barang/laptop.webp"
                             class="custom-block-image img-fluid" alt="">
                     </a>
