@@ -6,6 +6,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use App\Models\Lelang;
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Routing\Controller as BaseController;
 
@@ -18,7 +19,7 @@ class Controller extends BaseController
         $lelang = DB::table('tb_lelang')
             ->join('tb_barang', 'tb_barang.id_barang', '=', 'tb_lelang.id_barang')
             ->get();
-        return view('Users.banner', compact('lelang'));
+        return view('Users.index', ['lelang' => $lelang]);
     }
 
     public function penawaran_page($id_lelang)
@@ -28,5 +29,16 @@ class Controller extends BaseController
             ->join('tb_barang', 'tb_lelang.id_barang', '=', 'tb_barang.id_barang')
             ->get();
         return view('Users.penawaran', compact('lelang'));
+    }
+
+    public function search(Request $request)
+    {
+        if (request('search')) {
+            $lelang = Lelang::where('nama_barang', 'like', '%' . request('search') . '%')->get();
+        } else {
+            $lelang = Lelang::all();
+        }
+
+        return view('Users.index', ['lelang' => $lelang]);
     }
 }

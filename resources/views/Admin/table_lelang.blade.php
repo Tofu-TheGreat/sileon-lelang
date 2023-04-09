@@ -11,7 +11,7 @@
                             <th>Barang</th>
                             <th>Tanggal Lelang</th>
                             <th>Harga Akhir</th>
-                            <th>Peserta Lelang</th>
+                            {{-- <th>Peserta Lelang</th> --}}
                             <th>Petugas</th>
                             <th>Status</th>
                             <th>Opsi</th>
@@ -24,8 +24,8 @@
                                 <td>{{ $item->nama_barang }}</td>
                                 <td>{{ $item->tgl_lelang }}</td>
                                 <td>{{ $item->harga_akhir }}</td>
-                                <td>{{ $item->id_user }}</td>
-                                <td>{{ $item->nama_petugas }}</td>
+                                {{-- <td>{{ $item->id_user }}</td> --}}
+                                <td>{{ $item->nama_lengkap }}</td>
                                 <td>{{ $item->status }}</td>
                                 <td>
                                     <a href="/delete_lelang/{{ $item->id_lelang }}" class="btn btn-danger">Delete</a>

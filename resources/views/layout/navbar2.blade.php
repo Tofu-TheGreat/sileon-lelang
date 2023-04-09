@@ -1,17 +1,19 @@
 <nav class="navbar navbar-expand-lg">
     <div class="container">
         <a class="navbar-brand me-lg-5 me-0" href="/user">
-            <img src="images/logo-sileon.png" class="logo-image img-fluid" alt="SiLeOn" style="width: 200px;" >
+            <img src="images/logo-sileon.png" class="logo-image img-fluid" alt="SiLeOn" style="width: 200px;">
         </a>
 
         <form action="#" method="get" class="custom-form search-form flex-fill me-3" role="search">
             <div class="input-group input-group-lg">
-                <input name="search" type="search" class="form-control" id="search" placeholder="Cari Barang"
-                    aria-label="Search">
+                <form action="{{ route('search.action') }}" method="post">
+                    <input name="search" type="text" class="form-control" id="search" placeholder="Cari Barang"
+                        aria-label="Search">
 
-                <button type="submit" class="form-control" id="submit">
-                    <i class="bi-search"></i>
-                </button>
+                    <button type="submit" class="form-control" id="submit">
+                        <i class="bi-search"></i>
+                    </button>
+                </form>
             </div>
         </form>
 

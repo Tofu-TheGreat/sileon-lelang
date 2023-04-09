@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LelangController;
 use App\Http\Controllers\UserController;
-use Illuminate\Support\Facades\Route;
+
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
 
 
 /*
@@ -22,9 +24,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 
-Route::get('/user', function () {
-    return view('Users.index',);
-});
+
 
 Route::get('/banner', [Controller::class, 'lelang_page'])->name('banner');
 
@@ -84,7 +84,7 @@ Route::get('profile', [HomeController::class, 'profile'])->name('profile');
 //
 
 
-
+Route::post('search', [Controller::class, 'search'])->name('search.action');
 
 
 Route::post('bid', [LelangController::class, 'bid'])->name('action.bid');
@@ -117,11 +117,11 @@ Route::middleware(['auth', 'petugas:Admin,Petugas'])->group(function () {
     Route::get('data_barang', [BarangController::class, 'tableBarang'])->name('table.databarang');
     Route::get('barang', [BarangController::class, 'barang'])->name('tambah.barang');
     Route::post('barang_action', [BarangController::class, 'barang_action'])->name('action.barang');
+    Route::post('tambah_lelang', [LelangController::class, 'buka_lelang'])->name('action.lelang');
     Route::get('data_lelang', [HomeController::class, 'lelang'])->name('table.lelang');
     Route::get('tambah_lelang_page', [LelangController::class, 'addlelang'])->name('add.lelang');
     Route::get('/ubah_lelang_page/{id_lelang}', [LelangController::class, 'ubah_lelang'])->name('ubah.lelang');
     Route::get('/ubah_barang_page/{id_barang}', [BarangController::class, 'ubah_barang'])->name('ubah.barang');
-    Route::post('tambah_lelang', [LelangController::class, 'buka_lelang'])->name('action.lelang');
     Route::post('update_lelang', [LelangController::class, 'update_lelang'])->name('update.lelang');
     Route::post('update_barang', [BarangController::class, 'update_barang'])->name('update.barang');
     Route::get('/delete_lelang/{id_lelang}', [LelangController::class, 'delete_lelang'])->name('delete.lelang');

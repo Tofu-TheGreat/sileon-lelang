@@ -30,7 +30,7 @@ class LelangController extends Controller
             'id_barang' => 'required',
             'tgl_lelang' => 'required|date',
             'harga_akhir' => 'required',
-            'id_petugas' => 'required',
+            'id_user' => 'required',
             'status' => 'required'
         ]);
 
@@ -38,7 +38,7 @@ class LelangController extends Controller
             'id_barang' => $request->id_barang,
             'tgl_lelang' => $request->tgl_lelang,
             'harga_akhir' => $request->harga_akhir,
-            'id_petugas' => $request->id_petugas,
+            'id_user' => $request->id_user,
             'status' => $request->status
         ]);
         $lelang->save();

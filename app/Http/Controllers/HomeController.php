@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Barang;
 use Illuminate\Support\Facades\DB;
 use App\Models\Petugas;
 use App\Models\User;
@@ -181,5 +182,15 @@ class HomeController extends Controller
         } else {
             return redirect()->route('table.datapetugas');
         }
+    }
+    public function search(Request $request)
+    {
+        if ($request->has('search')) {
+            $lelang = Barang::where('nama_barang', 'like', '%' . $request->search . '%')->get();
+        } else {
+            $lelang = Barang::all();
+        }
+
+        return view('Users.index', ['lelang' => $lelang]);
     }
 }
