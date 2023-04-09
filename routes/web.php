@@ -54,9 +54,6 @@ Route::get('/login', function () {
 Route::get('/register', function () {
     return view('Users.register',);
 });
-Route::get('/index2', function () {
-    return view('Users.index2',);
-});
 Route::get('/about', function () {
     return view('Users.about',);
 });
@@ -67,6 +64,9 @@ Route::get('/contact', function () {
 
 Route::get('/detail-laptop', function () {
     return view('Users.detail-laptop',);
+});
+Route::get('/detail-sepatu', function () {
+    return view('Users.detail-sepatu',);
 });
 
 
