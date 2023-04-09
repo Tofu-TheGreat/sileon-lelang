@@ -17,7 +17,7 @@ return new class extends Migration
             $table->date('tgl_lelang');
             $table->unsignedBigInteger('harga_akhir');
             $table->unsignedBigInteger('id_user');
-            $table->unsignedBigInteger('id_petugas');
+            // $table->unsignedBigInteger('id_petugas');
             $table->enum('status', ['dibuka', 'ditutup']);
             $table->timestamps();
         });

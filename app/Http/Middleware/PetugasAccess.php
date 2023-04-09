@@ -11,7 +11,7 @@ class PetugasAccess
 {
     public function handle(Request $request, Closure $next, ...$levels)
     {
-        if (auth()->check() && auth()->user()->level == 'petugas') {
+        if (auth()->user()->level == 'Petugas') {
             return $next($request);
         }
 

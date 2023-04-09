@@ -45,6 +45,30 @@ Route::get('/lupa_password', function () {
 Route::get('/verifikasi', function () {
     return view('Users.verifikasi',);
 });
+Route::get('/histori', function () {
+    return view('Users.histori',);
+});
+Route::get('/login', function () {
+    return view('Users.login',);
+});
+Route::get('/register', function () {
+    return view('Users.register',);
+});
+Route::get('/index2', function () {
+    return view('Users.index2',);
+});
+Route::get('/about', function () {
+    return view('Users.about',);
+});
+
+Route::get('/contact', function () {
+    return view('Users.contact',);
+});
+
+Route::get('/detail-laptop', function () {
+    return view('Users.detail-laptop',);
+});
+
 
 Auth::routes();
 
@@ -86,7 +110,14 @@ Route::post('login', [UserController::class, 'action_login'])->name('loginuser.a
 Route::get('data_masyarakat', [HomeController::class, 'user_table'])->name('table.datauser');
 // Route::get('admin_home', [HomeController::class, 'admin_home'])->middleware('cekAksesLogin:1')->name('Admin.index');
 
-Route::get('admin_home', [HomeController::class, 'admin_home'])->name('Admin.index');
 
-Route::middleware(['cek-akses:1'])->group(function () {
+// ...daftar route yang ingin Anda jaga dengan middleware guest di sini
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('admin_home', [HomeController::class, 'admin_home'])->name('Admin.index');
+});
+Route::middleware(['petugas'])->group(function () {
+    // Route::get('admin_home', [HomeController::class, 'admin_home'])->name('Admin.index');
+});
+Route::middleware(['auth', 'user'])->group(function () {
+    // Route::get('admin_home', [HomeController::class, 'admin_home'])->name('Admin.index');
 });

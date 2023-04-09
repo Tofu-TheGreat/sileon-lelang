@@ -4,16 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use App\Models\Petugas;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Lelang;
 
 class HomeController extends Controller
 {
 
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function admin_home()
     {
@@ -46,17 +47,18 @@ class HomeController extends Controller
 
     public function data_petugastable()
     {
-        $petugas = DB::table('tb_petugas')
+        $petugas = User::select('*')
+            ->where('tb_user.level', 'Admin', 'Petugas')
             ->get();
-        $level = DB::table('tb_level')
-            ->get();
+
+
         $data = [
             'title' => 'Home',
             'subTitle' => 'Data_petugas'
 
         ];
 
-        return view('Admin.table_petugas', ['petugas' => $petugas, 'tb_level' => $level])->with($data);
+        return view('Admin.table_petugas', ['petugas' => $petugas])->with($data);
     }
     public function data_leveltable()
     {
@@ -98,9 +100,10 @@ class HomeController extends Controller
         ];
         $lelang = DB::table('tb_lelang')
             ->join('tb_barang', 'tb_barang.id_barang', '=', 'tb_lelang.id_barang')
-            ->join('tb_petugas', 'tb_petugas.id_petugas', '=', 'tb_lelang.id_petugas')
+            ->join('tb_user', 'tb_user.id_user', '=', 'tb_lelang.id_user')
             ->get();
-        $petugas = DB::table('tb_petugas')
+        $petugas = User::select('*')
+            ->where('tb_user.level', 'Admin', 'Petugas')
             ->get();
         $barang = DB::table('tb_barang')
             ->get();

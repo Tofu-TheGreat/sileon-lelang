@@ -16,7 +16,7 @@ class AdminAccess
      */
     public function handle(Request $request, Closure $next, ...$levels)
     {
-        if (auth()->user()->level == 'admin') {
+        if (auth()->user()->level == 'Admin') {
             return $next($request);
         }
 

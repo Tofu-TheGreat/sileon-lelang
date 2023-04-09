@@ -13,7 +13,12 @@
                 <h3 class="my-4">Register Here.</h3>
                 <div class="mb-3">
                     <label for="nameForLogin" class="form-label">Nama Lengkap</label>
-                    <input type="text" name="nama_petugas" class="form-control" id="nameForLogin">
+                    <input type="text" name="nama_lengkap" class="form-control" id="nameForLogin">
+
+                </div>
+                <div class="mb-3">
+                    <label for="nameForLogin" class="form-label">Email</label>
+                    <input type="email" name="email" class="form-control" id="nameForLogin">
 
                 </div>
                 <div class="mb-3">
@@ -31,7 +36,7 @@
                 </div>
                 <div class="mb-3">
                     <select class="form-select" hidden name="level" aria-label="Default select example">
-                        <option value="admin">Administrator</option>
+                        <option value="Admin">Administrator</option>
                     </select>
                 </div>
                 <div class="mb-3 form-check">

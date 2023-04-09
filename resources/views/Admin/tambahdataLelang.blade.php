@@ -23,9 +23,9 @@
                     <input type="number" name="harga_akhir" class="form-control" id="hargaAwalBarang">
                 </div>
                 <div class="mb-3">
-                    <select class="form-select" name="id_petugas" aria-label="Default select example">
+                    <select class="form-select" name="id_user" aria-label="Default select example">
                         @foreach ($datapetugas as $petugas)
-                            <option value="{{ $petugas->id_petugas }}">{{ $petugas->nama_petugas }}</option>
+                            <option value="{{ $petugas->id_user }}">{{ $petugas->nama_lengkap }}</option>
                         @endforeach
                     </select>
                 </div>

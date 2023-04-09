@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Petugas;
 use App\Models\Barang;
 use App\Models\Lelang;
@@ -17,7 +18,9 @@ class LelangController extends Controller
             'subTitle' => ''
         ];
         $databarang = Barang::all();
-        $datapetugas = Petugas::all();
+        $datapetugas = User::select('*')
+            ->where('tb_user.level', 'Admin', 'Petugas')
+            ->get();
         return view('Admin.tambahdataLelang', compact('databarang', 'datapetugas'))->with($data);
     }
 
@@ -56,7 +59,9 @@ class LelangController extends Controller
             ->join('tb_barang', 'tb_barang.id_barang', '=', 'tb_lelang.id_barang')
             ->get();
         $databarang = Barang::all();
-        $datapetugas = Petugas::all();
+        $datapetugas = User::select('*')
+            ->where('tb_user.level', 'Admin', 'Petugas')
+            ->get();
         $data = [
             'title' => 'Login',
             'subTitle' => ''

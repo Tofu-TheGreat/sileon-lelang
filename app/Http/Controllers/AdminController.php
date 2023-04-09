@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Petugas;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -20,24 +21,29 @@ class AdminController extends Controller
     public function regisaction(Request $request)
     {
         $request->validate([
-            'nama_petugas' => 'required',
-            'username' => 'required|unique:tb_petugas',
+            'nama_lengkap' => 'required',
+            'email' => 'required|email',
+            'username' => 'required|unique:tb_user',
             'password' => 'required|string|min:8|max:255',
             'confirm_password' => 'required|same:password',
             'check' => 'required'
         ]);
 
-        $admin = Petugas::create([
-            'nama_petugas' => $request->nama_petugas,
+        $admin = User::create([
+            'nama_lengkap' => $request->nama_lengkap,
+            'email' => $request->email,
             'username' => $request->username,
             'password' => Hash::make($request->password),
             'level' => $request->level,
         ]);
         if (auth()->attempt(array('username' => $request->username, 'password' => $request->password))) {
-            if (auth()->user()->level == 'admin') {
+            if (auth()->user()->level == 'Admin') {
                 return redirect()->route('login');
-            } else if (auth()->user()->level == 'petugas') {
+            } else if (auth()->user()->level == 'Petugas') {
                 return redirect()->route('table.datapetugas');
+            } else if (auth()->user()->level == 'User') {
+
+                return redirect()->route('login');
             }
         } else {
             return redirect()->route('register')
@@ -47,11 +53,8 @@ class AdminController extends Controller
 
     public function login()
     {
-        $data = [
-            'title' => 'Login',
-            'subTitle' => 'Login'
-        ];
-        return view("Admin.loginAdmin")->with($data);
+
+        return view('login', ['title' => 'a', 'subTitle' => 'b']);
     }
     public function login_petugas()
     {
@@ -88,14 +91,14 @@ class AdminController extends Controller
 
         if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
             $request->session()->regenerate();
-            return redirect()->intended('admin_home')->with($data);
-            // if (auth()->user()->level == 'admin') {
-            // } else if (auth()->user()->level == 'petugas') {
-            //     return redirect()->intended('petugas_home')->with($data);
-            // }
-            //  else {
-            //     return redirect()->route('home');
-            // }
+            // dd(['username' => $request->username, 'password' => $request->password]);
+            if (auth()->user()->level == 'Admin') {
+                return redirect()->intended('admin_home')->with($data);
+            } else if (auth()->user()->level == 'Petugas') {
+                return redirect()->intended('petugas_home')->with($data);
+            } else  if (auth()->user()->level == 'User') {
+                return view('Users.index');
+            }
         } else {
             return redirect()->route('login')
                 ->with('error', 'Email-Address And Password Are Wrong.');
@@ -104,7 +107,7 @@ class AdminController extends Controller
 
     public function delete_petugas($id_petugas)
     {
-        $petugas = Petugas::where('id_petugas', $id_petugas)
+        $petugas = User::where('id_petugas', $id_petugas)
             ->delete();
         return redirect()->route('table.datapetugas');
     }

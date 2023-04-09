@@ -13,7 +13,12 @@
                 <h3 class="my-4">Tambah Data Here.</h3>
                 <div class="mb-3">
                     <label for="nameForLogin" class="form-label">Nama Lengkap</label>
-                    <input type="text" name="nama_petugas" class="form-control" id="nameForLogin">
+                    <input type="text" name="nama_lengkap" class="form-control" id="nameForLogin">
+
+                </div>
+                <div class="mb-3">
+                    <label for="nameForLogin" class="form-label">Email</label>
+                    <input type="email" name="email" class="form-control" id="nameForLogin">
 
                 </div>
                 <div class="mb-3">
@@ -30,8 +35,8 @@
                     <input type="password" name="confirm_password" class="form-control" id="confirmpasswordForLogin">
                 </div>
                 <div class="mb-3">
-                    <select class="form-select" name="id_level" hidden aria-label="Default select example">
-                        <option value="2">Petugas</option>
+                    <select class="form-select" hidden name="level" aria-label="Default select example">
+                        <option value="Petugas">Petugas</option>
                     </select>
                 </div>
                 <div class="mb-3 form-check">

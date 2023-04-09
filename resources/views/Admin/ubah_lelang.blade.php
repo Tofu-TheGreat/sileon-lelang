@@ -30,11 +30,11 @@
                             id="hargaAwalBarang">
                     </div>
                     <div class="mb-3">
-                        <select class="form-select" name="id_petugas" aria-label="Default select example">
+                        <select class="form-select" name="id_user" aria-label="Default select example">
                             @foreach ($datapetugas as $petugas)
-                                <option value="{{ $petugas->id_petugas }}"
-                                    {{ $lelangs->id_petugas == $petugas->id_petugas ? 'Selected' : '' }}>
-                                    {{ $petugas->nama_petugas }}</option>
+                                <option value="{{ $petugas->id_user }}"
+                                    {{ $lelang->id_user == $petugas->id_user ? 'Selected' : '' }}>
+                                    {{ $petugas->nama_lengkap }}</option>
                             @endforeach
                         </select>
                     </div>
