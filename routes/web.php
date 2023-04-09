@@ -28,10 +28,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/banner', [Controller::class, 'lelang_page'])->name('banner');
 
-Route::get('/detil', function () {
-    return view('Users.detil',);
-});
-
 Route::get('/penawaran/{id_lelang}', [Controller::class, 'penawaran_page'])->name('penawaran');
 
 Route::get('/penawaran', function () {
@@ -60,11 +56,8 @@ Route::get('/contact', function () {
     return view('Users.contact',);
 });
 
-Route::get('/detail-laptop', function () {
-    return view('Users.detail-laptop',);
-});
-Route::get('/detail-sepatu', function () {
-    return view('Users.detail-sepatu',);
+Route::get('/detail', function () {
+    return view('Users.detail',);
 });
 
 

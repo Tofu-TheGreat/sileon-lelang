@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
     <link href="css/templatemo-pod-talk.css" rel="stylesheet">
+    <link rel="shortcut icon" href="images/logo-sileon.png" type="image/x-icon">
 </head>
 <body>
     @include('layout.navbar2')
