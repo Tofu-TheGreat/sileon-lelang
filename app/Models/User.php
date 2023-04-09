@@ -24,4 +24,5 @@ class User extends Authenticatable
     protected $fillable = [
         'nama_lengkap', 'email', 'username', 'password', 'level'
     ];
+    public $incrementing = false;
 }

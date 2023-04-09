@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -95,7 +96,7 @@ class AdminController extends Controller
             if (auth()->user()->level == 'Admin') {
                 return redirect()->intended('admin_home')->with($data);
             } else if (auth()->user()->level == 'Petugas') {
-                return redirect()->intended('petugas_home')->with($data);
+                return redirect()->intended('admin_home')->with($data);
             } else  if (auth()->user()->level == 'User') {
                 return view('Users.index');
             }
@@ -110,5 +111,13 @@ class AdminController extends Controller
         $petugas = User::where('id_petugas', $id_petugas)
             ->delete();
         return redirect()->route('table.datapetugas');
+    }
+    public function logout()
+    {
+        Session::flush();
+
+        Auth::logout();
+
+        return redirect()->intended('/');
     }
 }

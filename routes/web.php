@@ -21,9 +21,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('Admin.pages-profile', array('title' => 'title'));
-});
+
 Route::get('/user', function () {
     return view('Users.index',);
 });
@@ -76,29 +74,18 @@ Route::get('registerpage_admin', [AdminController::class, 'regis'])->name('regis
 Route::post('register_admin', [AdminController::class, 'regisaction'])->name('regis.action');
 
 //
-Route::get('loginpage_admin', [AdminController::class, 'login'])->name('login');
+Route::get('/', [AdminController::class, 'login'])->name('login');
 Route::post('login_admin', [AdminController::class, 'loginaction'])->name('login.action');
+Route::get('logout_admin', [AdminController::class, 'logout'])->name('logout.admin');
 
 
-Route::get('data_petugas', [HomeController::class, 'data_petugastable'])->name('table.datapetugas');
-Route::get('data_level', [HomeController::class, 'data_leveltable'])->name('table.datalevel');
-Route::get('tambah_petugas', [HomeController::class, 'tambah'])->name('tambah.petugas');
+
 Route::get('profile', [HomeController::class, 'profile'])->name('profile');
 //
 
-Route::get('data_barang', [BarangController::class, 'tableBarang'])->name('table.databarang');
-Route::get('barang', [BarangController::class, 'barang'])->name('tambah.barang');
-Route::post('barang_action', [BarangController::class, 'barang_action'])->name('action.barang');
 
-Route::get('data_lelang', [HomeController::class, 'lelang'])->name('table.lelang');
-Route::get('tambah_lelang_page', [LelangController::class, 'addlelang'])->name('add.lelang');
-Route::get('/ubah_lelang_page/{id_lelang}', [LelangController::class, 'ubah_lelang'])->name('ubah.lelang');
-Route::get('/ubah_barang_page/{id_barang}', [BarangController::class, 'ubah_barang'])->name('ubah.barang');
-Route::post('tambah_lelang', [LelangController::class, 'buka_lelang'])->name('action.lelang');
-Route::post('update_lelang', [LelangController::class, 'update_lelang'])->name('update.lelang');
-Route::post('update_barang', [BarangController::class, 'update_barang'])->name('update.barang');
-Route::get('/delete_lelang/{id_lelang}', [LelangController::class, 'delete_lelang'])->name('delete.lelang');
-Route::get('/delete_barang/{id_barang}', [BarangController::class, 'delete_barang'])->name('delete.barang');
+
+
 
 Route::post('bid', [LelangController::class, 'bid'])->name('action.bid');
 
@@ -107,17 +94,42 @@ Route::get('login', [UserController::class, 'login'])->name('login.user');
 Route::post('register', [UserController::class, 'action_register'])->name('register.action');
 Route::post('login', [UserController::class, 'action_login'])->name('loginuser.action');
 
-Route::get('data_masyarakat', [HomeController::class, 'user_table'])->name('table.datauser');
 // Route::get('admin_home', [HomeController::class, 'admin_home'])->middleware('cekAksesLogin:1')->name('Admin.index');
 
 
+
 // ...daftar route yang ingin Anda jaga dengan middleware guest di sini
-Route::middleware(['auth', 'admin'])->group(function () {
+Route::middleware(['auth', 'petugas:Admin,Petugas'])->group(function () {
+
+
     Route::get('admin_home', [HomeController::class, 'admin_home'])->name('Admin.index');
+
+
+
+    //User dan Petugas
+    Route::get('data_petugas', [HomeController::class, 'data_petugastable'])->name('table.datapetugas');
+    Route::get('data_user', [HomeController::class, 'data_usertable'])->name('table.datauser');
+    Route::get('tambah_petugas', [HomeController::class, 'tambah'])->name('tambah.petugas');
+    Route::get('/ubah_user_page/{id_user}', [HomeController::class, 'ubah_user'])->name('ubah.user');
+    Route::post('update_user', [HomeController::class, 'update_user'])->name('update.user');
+    Route::get('/delete_user/{id_user}', [HomeController::class, 'delete_user'])->name('delete.user');
+    //Barang dan Lelang
+    Route::get('data_barang', [BarangController::class, 'tableBarang'])->name('table.databarang');
+    Route::get('barang', [BarangController::class, 'barang'])->name('tambah.barang');
+    Route::post('barang_action', [BarangController::class, 'barang_action'])->name('action.barang');
+    Route::get('data_lelang', [HomeController::class, 'lelang'])->name('table.lelang');
+    Route::get('tambah_lelang_page', [LelangController::class, 'addlelang'])->name('add.lelang');
+    Route::get('/ubah_lelang_page/{id_lelang}', [LelangController::class, 'ubah_lelang'])->name('ubah.lelang');
+    Route::get('/ubah_barang_page/{id_barang}', [BarangController::class, 'ubah_barang'])->name('ubah.barang');
+    Route::post('tambah_lelang', [LelangController::class, 'buka_lelang'])->name('action.lelang');
+    Route::post('update_lelang', [LelangController::class, 'update_lelang'])->name('update.lelang');
+    Route::post('update_barang', [BarangController::class, 'update_barang'])->name('update.barang');
+    Route::get('/delete_lelang/{id_lelang}', [LelangController::class, 'delete_lelang'])->name('delete.lelang');
+    Route::get('/delete_barang/{id_barang}', [BarangController::class, 'delete_barang'])->name('delete.barang');
 });
-Route::middleware(['petugas'])->group(function () {
-    // Route::get('admin_home', [HomeController::class, 'admin_home'])->name('Admin.index');
+Route::middleware(['auth', 'petugas'])->group(function () {
 });
+
 Route::middleware(['auth', 'user'])->group(function () {
     // Route::get('admin_home', [HomeController::class, 'admin_home'])->name('Admin.index');
 });

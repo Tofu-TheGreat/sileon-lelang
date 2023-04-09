@@ -4,7 +4,7 @@
     <div class="card">
         <div class="card-body">
 
-            <h1 class="mb-3 mt-3">Hi, Welcome Petugas!</h1>
+            <h1 class="mb-3 mt-3">Hi, Welcome {{ auth()->user()->username }}!</h1>
             <h2 class="mt-5">What to do</h2>
             <div class="row mt-5">
 

@@ -18,21 +18,20 @@
                 <li class="sidebar-header">
                     Tables
                 </li>
-                <li class="sidebar-item {{ $subTitle === 'Data_petugas' ? 'active' : '' }}">
-                    <a class="sidebar-link" href="{{ route('table.datapetugas') }}">
-                        <i class="bi bi-diagram-2 align-middle"></i> <span class="align-middle">Data Petugas</span>
-                    </a>
-                </li>
-                <li class="sidebar-item {{ $subTitle === 'Data_level' ? 'active' : '' }}">
-                    <a class="sidebar-link" href="{{ route('table.datalevel') }}">
-                        <i class="bi bi-diagram-2 align-middle"></i> <span class="align-middle">Data Level</span>
-                    </a>
-                </li>
-                <li class="sidebar-item {{ $subTitle === 'Masyarakat' ? 'active' : '' }}">
-                    <a class="sidebar-link" href="{{ route('table.datauser') }}">
-                        <i class="bi bi-diagram-2 align-middle"></i> <span class="align-middle">Data Masyarakat</span>
-                    </a>
-                </li>
+                @if (auth()->user()->level == 'Admin')
+                    <li class="sidebar-item {{ $subTitle === 'Data_petugas' ? 'active' : '' }}">
+                        <a class="sidebar-link" href="{{ route('table.datapetugas') }}">
+                            <i class="bi bi-diagram-2 align-middle"></i> <span class="align-middle">Data Petugas</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item {{ $subTitle === 'Data User' ? 'active' : '' }}">
+                        <a class="sidebar-link" href="{{ route('table.datauser') }}">
+                            <i class="bi bi-diagram-2 align-middle"></i> <span class="align-middle">Data User</span>
+                        </a>
+                    </li>
+                @else
+                @endif
+
                 <li class="sidebar-item  {{ $subTitle === 'Data Barang' ? 'active' : '' }}">
                     <a class="sidebar-link" href="{{ route('table.databarang') }}">
                         <i class="bi bi-diagram-2 align-middle"></i> <span class="align-middle">Data Barang</span>

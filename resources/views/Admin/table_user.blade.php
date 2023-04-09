@@ -8,11 +8,10 @@
                     <thead>
                         <tr>
 
-                            <th>Nama Lengkap</th>
-                            <th>Alamat</th>
+                            <th>Nama Petugas</th>
+                            <th>Email</th>
                             <th>Username</th>
-                            <th>No Telp</th>
-
+                            <th>Jabatan</th>
                             <th>Opsi</th>
                         </tr>
                     </thead>
@@ -21,13 +20,13 @@
                             <tr>
 
                                 <td>{{ $item->nama_lengkap }}</td>
-                                <td>{{ $item->alamat }}</td>
+                                <td>{{ $item->email }}</td>
                                 <td>{{ $item->username }}</td>
-                                <td>{{ $item->no_telp }}</td>
+                                <td>{{ $item->level }}</td>
 
                                 <td>
-                                    <a href="//{{ $item->id_user }}" class="btn btn-danger">Delete</a>
-                                    <a href="//{{ $item->id_user }}" class="btn btn-warning ms-2 my-1">Ubah</a>
+                                    <a href="/delete_user/{{ $item->id_user }}" class="btn btn-danger">Delete</a>
+                                    <a href="/ubah_user_page/{{ $item->id_user }}" class="btn btn-warning ms-2 my-1">Ubah</a>
                                 </td>
 
                             </tr>

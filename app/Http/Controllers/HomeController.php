@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Models\Petugas;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\Lelang;
 
@@ -59,6 +60,21 @@ class HomeController extends Controller
         ];
 
         return view('Admin.table_petugas', ['petugas' => $petugas])->with($data);
+    }
+    public function data_usertable()
+    {
+        $user = User::select('*')
+            ->where('tb_user.level', 'User')
+            ->get();
+
+
+        $data = [
+            'title' => 'Home',
+            'subTitle' => 'Data User'
+
+        ];
+
+        return view('Admin.table_user', ['user' => $user])->with($data);
     }
     public function data_leveltable()
     {
@@ -126,14 +142,44 @@ class HomeController extends Controller
         return view('Petugas.table_lelang', ['lelang' => $lelang, 'petugas' => $petugas, 'barang' => $barang])->with($data);
     }
 
-    public function user_table()
+    public function ubah_user($id_user)
     {
-        $data = [
-            'title' => 'Home',
-            'subTitle' => 'Masyarakat'
-        ];
-        $user = DB::table('tb_masyarakat')
+        $user = User::select('*')
+            ->where('id_user', $id_user)
             ->get();
-        return view('Admin.table_user', compact('user'))->with($data);
+        $data = [
+            'title' => 'Login',
+            'subTitle' => ''
+        ];
+        return view('Admin.ubah_user', ['user' => $user])->with($data);
+    }
+
+    public function update_user(Request $request)
+    {
+        $user = User::where('id_user', $request->id_user)
+            ->update([
+                'nama_lengkap' => $request->nama_lengkap,
+                'email' => $request->email,
+                'username' => $request->username,
+                'password' => Hash::make($request->password),
+                'level' => $request->level,
+            ]);
+        if ($request->level == 'User') {
+            return redirect()->route('table.datauser');
+        } else {
+            return redirect()->route('table.datapetugas');
+        }
+    }
+
+    public function delete_user(Request $request, $id_user)
+    {
+        $user = User::where('id_user', $id_user)
+            ->delete();
+
+        if ($request->level == 'User') {
+            return redirect()->route('table.datauser');
+        } else {
+            return redirect()->route('table.datapetugas');
+        }
     }
 }
