@@ -37,9 +37,34 @@
                                         {{ $item->deskripsi_barang }}
                                     </p>
                                     <button type="button" class="btn btn-primary mt-3 rounded-5" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal">
+                                        data-bs-target="#Tawar">
                                         Lakukan Penawaran
                                     </button>
+                                      <!-- Modal -->
+                                      <div class="modal fade" id="Tawar" tabindex="-1" aria-labelledby="TawarLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <h1 class="modal-title fs-5" id="TawarLabel">Penawaran</h1>
+                                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="input-group flex-nowrap mb-3">
+                                                    <span class="input-group-text" id="addon-wrapping">Penawaran Terakhir</span>
+                                                    <input type="text" class="form-control" placeholder="" value="Rp {{ $item->harga_akhir }}" aria-label="" aria-describedby="addon-wrapping">
+                                                  </div>
+                                                <div class="input-group flex-nowrap">
+                                                    <span class="input-group-text" id="addon-wrapping">Penawaran Anda</span>
+                                                    <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="addon-wrapping">
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+                                              <button type="button" class="btn btn-primary">BID!</button>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
 
                                 </div>
 
