@@ -101,7 +101,8 @@
                                     </label>
                                 </div>
                                 <div class="text-center">
-                                    <p>Don't have account? <a href="#" style="text-decoration: none">Sign Up</a>
+                                    <p>Don't have account? <a href="{{ route('register.user') }}"
+                                            style="text-decoration: none">Sign Up</a>
                                     </p>
 
                                 </div>

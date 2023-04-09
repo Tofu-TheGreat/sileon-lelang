@@ -91,4 +91,13 @@ class LelangController extends Controller
             ]);
         return redirect()->intended('/banner');
     }
+
+    public function detail($id_lelang)
+    {
+        $lelang = Lelang::select('*')
+            ->where('id_lelang', $id_lelang)
+            ->join('tb_barang', 'tb_lelang.id_barang', '=', 'tb_barang.id_barang')
+            ->get();
+        return view('Users.detail', ['lelang' => $lelang]);
+    }
 }

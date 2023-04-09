@@ -56,9 +56,7 @@ Route::get('/contact', function () {
     return view('Users.contact',);
 });
 
-Route::get('/detail', function () {
-    return view('Users.detail',);
-});
+Route::get('/detail/{id_lelang}', [LelangController::class, 'detail'])->name('detail');
 
 
 Auth::routes();

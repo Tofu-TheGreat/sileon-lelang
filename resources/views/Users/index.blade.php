@@ -25,9 +25,9 @@
                                         alt="">
                                 </h4>
 
-                                <span class="badge">Storytelling</span>
+                                <span class="badge">Peserta Lelang</span>
 
-                                <span class="badge">Business</span>
+                                <span class="badge">Selebgram</span>
                             </div>
 
                             <div class="social-share">
@@ -58,9 +58,9 @@
                                         alt="">
                                 </h4>
 
-                                <span class="badge">Creative</span>
+                                <span class="badge">Peserta Lelang</span>
 
-                                <span class="badge">Design</span>
+                                <span class="badge">Penyanyi</span>
                             </div>
 
                             <div class="social-share">
@@ -87,9 +87,9 @@
                             <div class="owl-carousel-info">
                                 <h4 class="mb-2">Taylor</h4>
 
-                                <span class="badge">Modeling</span>
+                                <span class="badge">Peserta Lelang</span>
 
-                                <span class="badge">Fashion</span>
+                                <span class="badge">Aktris</span>
                             </div>
 
                             <div class="social-share">
@@ -109,54 +109,8 @@
                             </div>
                         </div>
 
-                        <div class="owl-carousel-info-wrap item">
-                            <img src="images/profile/man-portrait.jpg" class="owl-carousel-image img-fluid" alt="">
 
-                            <div class="owl-carousel-info">
-                                <h4 class="mb-2">Nick</h4>
 
-                                <span class="badge">Acting</span>
-                            </div>
-
-                            <div class="social-share">
-                                <ul class="social-icon">
-                                    <li class="social-icon-item">
-                                        <a href="#" class="social-icon-link bi-instagram"></a>
-                                    </li>
-
-                                    <li class="social-icon-item">
-                                        <a href="#" class="social-icon-link bi-youtube"></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="owl-carousel-info-wrap item">
-                            <img src="images/profile/woman-posing-black-dress-medium-shot.jpg"
-                                class="owl-carousel-image img-fluid" alt="">
-
-                            <div class="owl-carousel-info">
-                                <h4 class="mb-2">
-                                    Elsa
-                                    <img src="images/verified.png" class="owl-carousel-verified-image img-fluid"
-                                        alt="">
-                                </h4>
-
-                                <span class="badge">Influencer</span>
-                            </div>
-
-                            <div class="social-share">
-                                <ul class="social-icon">
-                                    <li class="social-icon-item">
-                                        <a href="#" class="social-icon-link bi-instagram"></a>
-                                    </li>
-
-                                    <li class="social-icon-item">
-                                        <a href="#" class="social-icon-link bi-youtube"></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
 
                     </div>
                 </div>
@@ -177,7 +131,7 @@
                 @foreach ($lelang as $item)
                     <div class="col-lg-4 col-md-8 col-12 mb-4 mb-lg-0">
                         <div class="custom-block custom-block-overlay">
-                            <a href="detail-mobil.html" class="custom-block-image-wrap">
+                            <a href="/detail/{{ $item->id_lelang }}" class="custom-block-image-wrap">
                                 <img src="../image_save/{{ $item->gambar }}" class="custom-block-image img-fluid"
                                     alt="">
                             </a>

@@ -30,15 +30,4 @@ class Controller extends BaseController
             ->get();
         return view('Users.penawaran', compact('lelang'));
     }
-
-    public function search(Request $request)
-    {
-        if (request('search')) {
-            $lelang = Lelang::where('nama_barang', 'like', '%' . request('search') . '%')->get();
-        } else {
-            $lelang = Lelang::all();
-        }
-
-        return view('Users.index', ['lelang' => $lelang]);
-    }
 }

@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg">
     <div class="container">
-        <a class="navbar-brand me-lg-5 me-0" href="/user">
-            <img src="images/logo-sileon.png" class="logo-image img-fluid" alt="SiLeOn" style="width: 200px;">
+        <a class="navbar-brand me-lg-5 me-0" href="/banner">
+            <img src="../images/logo-sileon.png" class="logo-image img-fluid" alt="SiLeOn" style="width: 200px;">
         </a>
 
         <form action="#" method="get" class="custom-form search-form flex-fill me-3" role="search">

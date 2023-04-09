@@ -40,7 +40,7 @@
 
             <div class="col-lg-2 col-md-3 col-12">
                 <a class="navbar-brand" href="index.html">
-                    <img src="images/logo-sileon.png" class="logo-image img-fluid w-100" alt="SiLeOn">
+                    <img src="../images/logo-sileon.png" class="logo-image img-fluid w-100" alt="SiLeOn">
                 </a>
             </div>
 
