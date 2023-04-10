@@ -55,6 +55,9 @@ Route::get('/about', function () {
 Route::get('/contact', function () {
     return view('Users.contact',);
 });
+Route::get('/ketentuan', function () {
+    return view('Users.ketentuan',);
+});
 
 Route::get('/detail/{id_lelang}', [LelangController::class, 'detail'])->name('detail');
 

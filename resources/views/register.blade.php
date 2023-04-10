@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>SILEON</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 </head>
@@ -111,7 +111,7 @@
                                         id="form2Example33" checked />
                                     <label class="form-check-label" for="form2Example33">
                                         Setuju dengan <a href="#" style="text-decoration: none">Ketentuan</a> & <a
-                                            href="#" style="text-decoration: none">Persyaratan</a>
+                                            href="/ketentuan" style="text-decoration: none">Persyaratan</a>
                                     </label>
                                 </div>
                                 <div class="text-center">
