@@ -98,7 +98,7 @@ class AdminController extends Controller
             } else if (auth()->user()->level == 'Petugas') {
                 return redirect()->intended('admin_home')->with($data);
             } else  if (auth()->user()->level == 'User') {
-                return view('Users.index');
+                return redirect()->intended('/banner');
             }
         } else {
             return redirect()->route('login')

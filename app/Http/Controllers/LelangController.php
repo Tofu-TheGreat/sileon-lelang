@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Petugas;
 use App\Models\Barang;
+use App\Models\History;
 use App\Models\Lelang;
 use Illuminate\Http\Request;
 
@@ -66,7 +67,7 @@ class LelangController extends Controller
             'title' => 'Login',
             'subTitle' => ''
         ];
-        return view('Admin.ubah_lelang', ['lelang' => $lelang], compact('databarang', 'datapetugas'))->with($data);
+        return view('Admin.ubah_lelang', ['lelang' => $lelang, 'databarang' => $databarang, 'datapetugas' => $datapetugas])->with($data);
     }
 
     public function update_lelang(Request $request)
@@ -76,7 +77,7 @@ class LelangController extends Controller
                 'id_barang' => $request->id_barang,
                 'tgl_lelang' => $request->tgl_lelang,
                 'harga_akhir' => $request->harga_akhir,
-                'id_petugas' => $request->id_petugas,
+                'id_user' => $request->id_user,
                 'status' => $request->status
             ]);
 
@@ -89,6 +90,13 @@ class LelangController extends Controller
             ->update([
                 'harga_akhir' => $request->harga_akhir,
             ]);
+        $history = History::create([
+            'id_lelang' => $request->id_lelang,
+            'id_barang' => $request->id_barang,
+            'id_user' => $request->id_user,
+            'penawaran_harga' => $request->harga_akhir
+        ]);
+
         return redirect()->intended('/banner');
     }
 

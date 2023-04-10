@@ -42,8 +42,8 @@
                         <i class="bi bi-diagram-2 align-middle"></i> <span class="align-middle">Data Lelang</span>
                     </a>
                 </li>
-                <li class="sidebar-item ">
-                    <a class="sidebar-link" href="">
+                <li class="sidebar-item {{ $subTitle === 'Data History' ? 'active' : '' }}"">
+                    <a class="sidebar-link" href="{{ route('table.datahistory') }}">
                         <i class="bi bi-diagram-2 align-middle"></i> <span class="align-middle">History Lelang</span>
                     </a>
                 </li>

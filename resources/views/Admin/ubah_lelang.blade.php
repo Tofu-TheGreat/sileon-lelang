@@ -33,7 +33,7 @@
                         <select class="form-select" name="id_user" aria-label="Default select example">
                             @foreach ($datapetugas as $petugas)
                                 <option value="{{ $petugas->id_user }}"
-                                    {{ $lelang->id_user == $petugas->id_user ? 'Selected' : '' }}>
+                                    {{ $lelangs->id_user == $petugas->id_user ? 'Selected' : '' }}>
                                     {{ $petugas->nama_lengkap }}</option>
                             @endforeach
                         </select>

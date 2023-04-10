@@ -33,15 +33,7 @@
     </script>
     <script>
         function change1(val) {
-            document.getElementById('count').value = val;
-        }
-
-        function change2(val) {
-            document.getElementById('count').value = val;
-        }
-
-        function change3(val) {
-            document.getElementById('count').value = val;
+            document.getElementById('count').value += val;
         }
     </script>
 </body>

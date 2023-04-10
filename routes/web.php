@@ -26,7 +26,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/banner', [Controller::class, 'lelang_page'])->name('banner');
+
 
 Route::get('/penawaran/{id_lelang}', [Controller::class, 'penawaran_page'])->name('penawaran');
 
@@ -59,7 +59,7 @@ Route::get('/ketentuan', function () {
     return view('Users.ketentuan',);
 });
 
-Route::get('/detail/{id_lelang}', [LelangController::class, 'detail'])->name('detail');
+
 
 
 Auth::routes();
@@ -81,7 +81,7 @@ Route::get('profile', [HomeController::class, 'profile'])->name('profile');
 Route::post('search', [Controller::class, 'search'])->name('search.action');
 
 
-Route::post('bid', [LelangController::class, 'bid'])->name('action.bid');
+
 
 Route::get('register', [UserController::class, 'register'])->name('register.user');
 Route::get('login', [UserController::class, 'login'])->name('login.user');
@@ -108,6 +108,7 @@ Route::middleware(['auth', 'petugas:Admin,Petugas'])->group(function () {
     Route::post('update_user', [HomeController::class, 'update_user'])->name('update.user');
     Route::get('/delete_user/{id_user}', [HomeController::class, 'delete_user'])->name('delete.user');
     //Barang dan Lelang
+    Route::get('data_history', [HomeController::class, 'data_historytable'])->name('table.datahistory');
     Route::get('data_barang', [BarangController::class, 'tableBarang'])->name('table.databarang');
     Route::get('barang', [BarangController::class, 'barang'])->name('tambah.barang');
     Route::post('barang_action', [BarangController::class, 'barang_action'])->name('action.barang');
@@ -121,9 +122,10 @@ Route::middleware(['auth', 'petugas:Admin,Petugas'])->group(function () {
     Route::get('/delete_lelang/{id_lelang}', [LelangController::class, 'delete_lelang'])->name('delete.lelang');
     Route::get('/delete_barang/{id_barang}', [BarangController::class, 'delete_barang'])->name('delete.barang');
 });
-Route::middleware(['auth', 'petugas'])->group(function () {
-});
+
 
 Route::middleware(['auth', 'user'])->group(function () {
-    // Route::get('admin_home', [HomeController::class, 'admin_home'])->name('Admin.index');
+    Route::get('/banner', [Controller::class, 'lelang_page'])->name('banner');
+    Route::get('/detail/{id_lelang}', [LelangController::class, 'detail'])->name('detail');
+    Route::post('bid', [LelangController::class, 'bid'])->name('action.bid');
 });

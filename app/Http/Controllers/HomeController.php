@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Barang;
+use App\Models\History;
 use Illuminate\Support\Facades\DB;
 use App\Models\Petugas;
 use App\Models\User;
@@ -61,6 +62,23 @@ class HomeController extends Controller
         ];
 
         return view('Admin.table_petugas', ['petugas' => $petugas])->with($data);
+    }
+    public function data_historytable()
+    {
+        $history = History::select('*')
+            ->join('tb_barang', 'tb_barang.id_barang', '=', 'history_lelang.id_barang')
+            ->join('tb_user', 'tb_user.id_user', '=', 'history_lelang.id_user')
+            ->join('tb_lelang', 'tb_lelang.id_lelang', '=', 'history_lelang.id_lelang')
+            ->get();
+
+
+        $data = [
+            'title' => 'Home',
+            'subTitle' => 'Data History'
+
+        ];
+
+        return view('Admin.table_history', ['history' => $history])->with($data);
     }
     public function data_usertable()
     {
