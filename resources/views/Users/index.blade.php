@@ -3,7 +3,6 @@
     <section class="hero-section">
         <div class="container">
             <div class="row">
-
                 <div class="col-lg-12 col-12">
                     <div class="text-center mb-5 pb-2">
                         <h1 class="text-white">Ayo Mulai Lelang di SiLeOn</h1>
