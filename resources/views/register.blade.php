@@ -110,8 +110,8 @@
                                     <input class="form-check-input me-2" name="check" type="checkbox"
                                         id="form2Example33" checked />
                                     <label class="form-check-label" for="form2Example33">
-                                        Setuju dengan <a href="#" style="text-decoration: none">Ketentuan</a> & <a
-                                            href="/ketentuan" style="text-decoration: none">Persyaratan</a>
+                                        Setuju dengan <a href="/ketentuan" style="text-decoration: none">Ketentuan</a> &
+                                        <a href="/ketentuan" style="text-decoration: none">Persyaratan</a>
                                     </label>
                                 </div>
                                 <div class="text-center">

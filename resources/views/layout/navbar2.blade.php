@@ -4,16 +4,15 @@
             <img src="../images/logo-sileon.png" class="logo-image img-fluid" alt="SiLeOn" style="width: 200px;">
         </a>
 
-        <form action="#" method="get" class="custom-form search-form flex-fill me-3" role="search">
+        <form action="{{ route('search.action') }}" method="get" class="custom-form search-form flex-fill me-3"
+            role="search">
             <div class="input-group input-group-lg">
-                <form action="{{ route('search.action') }}" method="post">
-                    <input name="search" type="text" class="form-control" id="search" placeholder="Cari Barang"
-                        aria-label="Search">
+                <input name="search" type="text" class="form-control" id="search" placeholder="Cari Barang"
+                    aria-label="Search">
 
-                    <button type="submit" class="form-control" id="submit">
-                        <i class="bi-search"></i>
-                    </button>
-                </form>
+                <button type="submit" class="form-control" id="submit">
+                    <i class="bi-search"></i>
+                </button>
             </div>
         </form>
 
@@ -31,7 +30,7 @@
                     <a class="nav-link" href="/about">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/histori">Histori</a>
+                    <a class="nav-link" href="/histori/{{ auth()->user()->id_user }}">Histori</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/contact">Contact</a>

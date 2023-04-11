@@ -80,6 +80,20 @@ class HomeController extends Controller
 
         return view('Admin.table_history', ['history' => $history])->with($data);
     }
+    public function data_historyuser($id_user)
+    {
+        $history = History::select('*')
+            ->where('history_lelang.id_user', $id_user)
+            ->join('tb_barang', 'tb_barang.id_barang', '=', 'history_lelang.id_barang')
+            ->join('tb_user', 'tb_user.id_user', '=', 'history_lelang.id_user')
+            ->join('tb_lelang', 'tb_lelang.id_lelang', '=', 'history_lelang.id_lelang')
+            ->get();
+
+
+
+
+        return view('Users.histori', ['history' => $history]);
+    }
     public function data_usertable()
     {
         $user = User::select('*')
@@ -212,7 +226,9 @@ class HomeController extends Controller
     public function search(Request $request)
     {
         if ($request->has('search')) {
-            $lelang = Barang::where('nama_barang', 'like', '%' . $request->search . '%')->get();
+            $lelang = Barang::where('nama_barang', 'like', '%' . $request->search . '%')
+                ->join('tb_lelang', 'tb_lelang.id_barang', '=', 'tb_barang.id_barang')
+                ->get();
         } else {
             $lelang = Barang::all();
         }

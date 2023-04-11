@@ -19,7 +19,8 @@
 
                 <ul class="social-icon">
                     <li class="social-icon-item">
-                        <a href="#" class="social-icon-link bi-instagram"></a>
+                        <a href="https://www.instagram.com/sileon_id/?igshid=MTIzZWQxMDU%3D"
+                            class="social-icon-link bi-instagram"></a>
                     </li>
 
                     <li class="social-icon-item">

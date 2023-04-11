@@ -39,9 +39,7 @@ Route::get('/lupa_password', function () {
 Route::get('/verifikasi', function () {
     return view('Users.verifikasi',);
 });
-Route::get('/histori', function () {
-    return view('Users.histori',);
-});
+
 Route::get('/login', function () {
     return view('Users.login',);
 });
@@ -78,7 +76,7 @@ Route::get('profile', [HomeController::class, 'profile'])->name('profile');
 //
 
 
-Route::post('search', [Controller::class, 'search'])->name('search.action');
+Route::get('search', [HomeController::class, 'search'])->name('search.action');
 
 
 
@@ -131,4 +129,5 @@ Route::middleware(['auth', 'user'])->group(function () {
     Route::get('/banner', [Controller::class, 'lelang_page'])->name('banner');
     Route::get('/detail/{id_lelang}', [LelangController::class, 'detail'])->name('detail');
     Route::post('bid', [LelangController::class, 'bid'])->name('action.bid');
+    Route::get('/histori/{id_user}', [HomeController::class, 'data_historyuser'])->name('histori.user');
 });
