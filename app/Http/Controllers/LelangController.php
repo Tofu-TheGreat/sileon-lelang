@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Petugas;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\Barang;
 use App\Models\History;
 use App\Models\Lelang;
@@ -11,6 +12,27 @@ use Illuminate\Http\Request;
 
 class LelangController extends Controller
 {
+    //PDF CETAK
+    public function cetakpdf_barang()
+    {
+        $barang = Barang::all();
+
+        $pdf = PDF::loadview('Admin.laporanBarang_pdf', ['barang' => $barang]);
+        return $pdf->download('laporan-barang.pdf');
+    }
+    public function cetakpdf_pemenang($id_history)
+    {
+        $history = History::where('id_history', $id_history)
+            ->join('tb_barang', 'tb_barang.id_barang', '=', 'history_lelang.id_barang')
+            ->join('tb_user', 'tb_user.id_user', '=', 'history_lelang.id_user')
+            ->join('tb_lelang', 'tb_lelang.id_lelang', '=', 'history_lelang.id_lelang')
+            ->get();
+
+        $pdf = PDF::loadview('Admin.laporanPemenang_pdf', ['history' => $history]);
+        return $pdf->download('laporan-pemenang.pdf');
+    }
+    //END PDF
+
 
     public function addlelang()
     {
@@ -89,6 +111,7 @@ class LelangController extends Controller
         $lelang = Lelang::where('id_lelang', $request->id_lelang)
             ->update([
                 'harga_akhir' => $request->harga_akhir,
+                'tgl_lelang' => $request->tgl_lelang,
             ]);
         $history = History::create([
             'id_lelang' => $request->id_lelang,

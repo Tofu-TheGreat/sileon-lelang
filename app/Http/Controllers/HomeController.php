@@ -201,6 +201,14 @@ class HomeController extends Controller
             return redirect()->route('table.datapetugas');
         }
     }
+    public function delete_history(Request $request, $history)
+    {
+        $user = History::where('id_history', $history)
+            ->delete();
+
+
+        return redirect()->intended('data_history');
+    }
     public function search(Request $request)
     {
         if ($request->has('search')) {

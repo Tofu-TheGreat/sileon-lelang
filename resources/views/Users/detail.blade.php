@@ -76,6 +76,7 @@
                             <input type="text" hidden name="id_lelang" value="{{ $item->id_lelang }}">
                             <input type="text" hidden name="id_barang" value="{{ $item->id_barang }}">
                             <input type="text" hidden name="id_user" value="{{ auth()->user()->id_user }}">
+
                             <div class="input-group flex-nowrap mb-3">
                                 <span class="input-group-text" id="addon-wrapping">Penawaran Terakhir</span>
                                 <input type="text" class="form-control" disabled placeholder=""

@@ -121,6 +121,9 @@ Route::middleware(['auth', 'petugas:Admin,Petugas'])->group(function () {
     Route::post('update_barang', [BarangController::class, 'update_barang'])->name('update.barang');
     Route::get('/delete_lelang/{id_lelang}', [LelangController::class, 'delete_lelang'])->name('delete.lelang');
     Route::get('/delete_barang/{id_barang}', [BarangController::class, 'delete_barang'])->name('delete.barang');
+    Route::get('/delete_history/{id_history}', [HomeController::class, 'delete_history'])->name('delete.history');
+    Route::get('/cetak_pdf_barang', [LelangController::class, 'cetakpdf_barang'])->name('pdf.barang');
+    Route::get('/cetak_pdf_pemenang/{id_history}', [LelangController::class, 'cetakpdf_pemenang'])->name('pdf.pemenang');
 });
 
 

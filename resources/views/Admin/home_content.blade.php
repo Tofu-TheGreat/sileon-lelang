@@ -26,7 +26,7 @@
                             <h5 class="card-title text-light">Data Histori Lelang</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of
                                 the card's content.</p>
-                            <a href="" class="stretched-link"></a>
+                            <a href="{{ route('table.datahistory') }}" class="stretched-link"></a>
                         </div>
                     </div>
                 </div>

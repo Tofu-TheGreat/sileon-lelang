@@ -10,8 +10,10 @@
                             <th>Nama Barang</th>
                             <th>Nama Peserta</th>
                             <th>Email</th>
+                            <th>Tanggal</th>
                             {{-- <th>Peserta Lelang</th> --}}
                             <th>Penawaran</th>
+                            <th>Opsi</th>
 
                         </tr>
                     </thead>
@@ -22,7 +24,16 @@
                                 <td>{{ $item->nama_lengkap }}</td>
                                 {{-- <td>{{ $item->id_user }}</td> --}}
                                 <td>{{ $item->email }}</td>
+                                <td>{{ $item->created_at }}</td>
                                 <td>{{ $item->penawaran_harga }}</td>
+                                <td>
+                                    @if ($item->penawaran_harga == $item->harga_awal)
+                                        <a href="/cetak_pdf_pemenang/{{ $item->id_history }}" class="btn btn-primary">Cetak
+                                            Laporan
+                                            Pemenang</a>
+                                    @endif
+                                    <a href="/delete_history/{{ $item->id_history }}" class="btn btn-danger my-1">Delete</a>
+                                </td>
 
 
                             </tr>

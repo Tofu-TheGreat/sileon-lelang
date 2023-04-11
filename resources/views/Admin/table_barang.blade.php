@@ -16,6 +16,7 @@
                         </tr>
                     </thead>
                     <tbody>
+
                         @foreach ($barang as $item)
                             <tr>
                                 <td>{{ $item->nama_barang }}</td>
@@ -34,10 +35,17 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td class="border-0"><a href="{{ route('tambah.barang') }}" class="btn btn-primary"><i
-                                        class="bi bi-box-seam">
-                                        Tambah
-                                    </i></a>
+
+                            <td class="border-0">
+                                <div class="row">
+                                    <div class="col-md-6"><a href="{{ route('tambah.barang') }}" class="btn btn-primary"><i
+                                                class="bi bi-box-seam">
+                                                Tambah
+                                            </i></a></div>
+                                    <div class="col-md-6"> <a href="{{ route('pdf.barang') }}"
+                                            class="btn btn-primary ">Cetak
+                                            Laporan</a></div>
+                                </div>
                             </td>
                         </tr>
                     </tfoot>
