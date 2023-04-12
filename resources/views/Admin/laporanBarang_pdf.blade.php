@@ -25,7 +25,7 @@
             <tr>
                 <th>No</th>
                 <th>Nama Barang</th>
-                <th>Tanggal</th>
+                <th>Tanggal Masuk</th>
                 <th>Harga Awal</th>
                 <th>Deskripsi Barang</th>
                 <th>Gambar</th>

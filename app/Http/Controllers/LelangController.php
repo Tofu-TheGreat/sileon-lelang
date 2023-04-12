@@ -43,6 +43,7 @@ class LelangController extends Controller
         $databarang = Barang::all();
         $datapetugas = User::select('*')
             ->where('tb_user.level', 'Admin', 'Petugas')
+            ->orWhere('tb_user.level', 'Petugas')
             ->get();
         return view('Admin.tambahdataLelang', compact('databarang', 'datapetugas'))->with($data);
     }
@@ -83,7 +84,8 @@ class LelangController extends Controller
             ->get();
         $databarang = Barang::all();
         $datapetugas = User::select('*')
-            ->where('tb_user.level', 'Admin', 'Petugas')
+            ->where('tb_user.level', 'Admin')
+            ->orWhere('tb_user.level', 'Petugas')
             ->get();
         $data = [
             'title' => 'Login',
@@ -111,7 +113,7 @@ class LelangController extends Controller
         $lelang = Lelang::where('id_lelang', $request->id_lelang)
             ->update([
                 'harga_akhir' => $request->harga_akhir,
-                'tgl_lelang' => $request->tgl_lelang,
+
             ]);
         $history = History::create([
             'id_lelang' => $request->id_lelang,

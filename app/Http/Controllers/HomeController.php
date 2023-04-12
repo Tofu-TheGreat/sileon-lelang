@@ -51,7 +51,8 @@ class HomeController extends Controller
     public function data_petugastable()
     {
         $petugas = User::select('*')
-            ->where('tb_user.level', 'Admin', 'Petugas')
+            ->where('tb_user.level', 'Admin')
+            ->orWhere('tb_user.level', 'Petugas')
             ->get();
 
 
