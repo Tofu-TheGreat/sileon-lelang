@@ -141,7 +141,6 @@
                                         {{ $item->nama_barang }}
                                     </a>
                                 </h5>
-
                                 <p class="badge mb-0 fs-5">Rp {{ $item->harga_akhir }}</p>
                             </div>
                         </div>
