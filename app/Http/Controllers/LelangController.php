@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Petugas;
-use Barryvdh\DomPDF\Facade\Pdf;
+use Barryvdh\DomPDF\Facade\PDF;
 use App\Models\Barang;
 use App\Models\History;
 use App\Models\Lelang;
@@ -17,7 +17,7 @@ class LelangController extends Controller
     {
         $barang = Barang::all();
 
-        $pdf = PDF::loadview('Admin.laporanBarang_pdf', ['barang' => $barang]);
+        $pdf = barang ::loadview('Admin.laporanBarang_pdf', ['barang' => $barang]);
         return $pdf->download('laporan-barang.pdf');
     }
     public function cetakpdf_pemenang($id_history)
@@ -28,7 +28,7 @@ class LelangController extends Controller
             ->join('tb_lelang', 'tb_lelang.id_lelang', '=', 'history_lelang.id_lelang')
             ->get();
 
-        $pdf = PDF::loadview('Admin.laporanPemenang_pdf', ['history' => $history]);
+        $pdf = barang::loadview('Admin.laporanPemenang_pdf', ['history' => $history]);
         return $pdf->download('laporan-pemenang.pdf');
     }
     //END PDF
