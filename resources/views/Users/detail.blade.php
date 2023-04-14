@@ -78,28 +78,28 @@
                             <input type="text" hidden name="id_user" value="{{ auth()->user()->id_user }}">
 
                             <div class="input-group flex-nowrap mb-3">
-                                <span class="input-group-text" id="addon-wrapping">Penawaran Terakhir</span>
-                                <input type="text" class="form-control" disabled placeholder=""
+                                <span class="input-group-text" style="background-color:darkgray; width: 12rem;" id="addon-wrapping">Penawaran Terakhir</span>
+                                <input type="text" class="form-control" style="background-color:darkgray; width: 17rem;" disabled placeholder=""
                                     value="Rp {{ $item->harga_akhir }}" aria-label=""
                                     aria-describedby="addon-wrapping">
                             </div>
                             <div class="input-group flex-nowrap">
-                                <span class="input-group-text" id="addon-wrapping">Penawaran Anda</span>
-                                <input type="number" step="0.01" min="{{ $item->harga_akhir }}"
+                                <span class="input-group-text" style="width: 12rem;" id="addon-wrapping">Penawaran Anda</span>
+                                <input type="number" step="0.01" min="{{ $item->harga_akhir }}" style="width: 17rem;"
                                     value="{{ $item->harga_akhir > 0 ? $item->harga_akhir : '' }}" id="count"
                                     name="harga_akhir" class="form-control" placeholder="" aria-label=""
                                     aria-describedby="addon-wrapping">
                             </div>
                             <div class="input-group flex-nowrap mt-4">
-                                <span class="input-group-text" id="addon-wrapping">Beli Langsung</span>
-                                <button onclick="change1({{ $item->harga_awal }})" type="button"
+                                <span class="input-group-text" style="width: 12rem;" id="addon-wrapping">Beli Langsung</span>
+                                <button onclick="change1({{ $item->harga_awal }})" style="width: 17rem;" type="button"
                                     value="{{ $item->harga_awal }}"
                                     class="btn btn-light">{{ $item->harga_awal }}</button>
                             </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-                            <button type="submit" class="btn btn-primary">BID!</button>
+                            <button type="submit" class="btn btn-primary">KONFIRMASI!</button>
                         </div>
                     </fieldset>
                 </form>

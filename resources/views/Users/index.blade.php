@@ -134,7 +134,6 @@
                                 <img src="../image_save/{{ $item->gambar }}" class="custom-block-image img-fluid"
                                     alt="">
                             </a>
-
                             <div class="custom-block-info custom-block-overlay-info">
                                 <h5 class="mb-1">
                                     <a href="listing-page.html">
