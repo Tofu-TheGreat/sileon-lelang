@@ -3,6 +3,8 @@
 
 <head>
     @include('partial.headContent')
+    <link href="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.css" rel="stylesheet" />
+
 </head>
 
 <body>
@@ -43,7 +45,10 @@
     </div>
 
     @include('partial.script')
-
+    <script src="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.js"></script>
+    <script>
+        let table = new DataTable('#myTable');
+    </script>
 </body>
 
 </html>

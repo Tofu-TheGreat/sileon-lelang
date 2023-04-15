@@ -4,7 +4,7 @@
     <div class="card">
         <div class="card-body">
             <div class="table-responsive-md">
-                <table class="table table-hover" id="myTable">
+                <table id="myTable" class="table table-hover" id="myTable">
                     <thead>
                         <tr>
                             <th>Nama Petugas</th>

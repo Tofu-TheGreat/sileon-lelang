@@ -13,6 +13,12 @@
 <body>
     <!-- Section: Design Block -->
     <section class="background-radial-gradient overflow-hidden">
+        @if (session('error'))
+            <div class="alert  alert-danger alert-dismissible fade show container-fluid" role="alert">
+                {{ session('error') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
         <style>
             .background-radial-gradient {
                 background-color: hsl(218, 41%, 15%);
@@ -56,6 +62,7 @@
         </style>
 
         <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
+
             <div class="row gx-lg-5 align-items-center mb-5">
                 <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
                     <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
@@ -83,12 +90,22 @@
                                 <div class="form-outline mb-4">
                                     <label class="form-label" for="form3Example3">Username</label>
                                     <input type="text" name="username" id="form3Example3" class="form-control" />
+                                    @if ($errors->has('username'))
+                                        <span class="invalid feedback"role="alert">
+                                            <p>{{ $errors->first('username') }}.</p>
+                                        </span>
+                                    @endif
                                 </div>
 
                                 <!-- Password input -->
                                 <div class="form-outline mb-4">
                                     <label class="form-label" for="form3Example4">Password</label>
                                     <input type="password" name="password" id="form3Example4" class="form-control" />
+                                    @if ($errors->has('password'))
+                                        <span class="invalid feedback"role="alert">
+                                            <p>{{ $errors->first('password') }}.</p>
+                                        </span>
+                                    @endif
                                 </div>
 
                                 <!-- Checkbox -->
@@ -99,6 +116,13 @@
                                         Setuju dengan <a href="/ketentuan" style="text-decoration: none">Ketentuan</a> &
                                         <a href="/ketentuan" style="text-decoration: none">Persyaratan</a>
                                     </label>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    @if ($errors->has('check'))
+                                        <span class="invalid feedback"role="alert">
+                                            <p>{{ $errors->first('check') }}.</p>
+                                        </span>
+                                    @endif
                                 </div>
                                 <div class="text-center">
                                     <p>Don't have account? <a href="{{ route('register.user') }}"

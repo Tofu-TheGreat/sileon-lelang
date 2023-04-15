@@ -19,7 +19,7 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="tglBarang" class="form-label">Tanggal Lelang</label>
+                        <label for="tglBarang" class="form-label">Batas Tanggal Lelang</label>
                         <input type="date" value="{{ $lelangs->tgl_lelang }}" name="tgl_lelang" class="form-control"
                             id="tglBarang">
 

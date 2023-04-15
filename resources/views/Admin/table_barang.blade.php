@@ -4,7 +4,7 @@
     <div class="card">
         <div class="card-body">
             <div class="table-responsive-md">
-                <table class="table table-hover">
+                <table id="myTable" class="table table-hover ">
                     <thead>
                         <tr>
                             <th>Nama Barang</th>
@@ -43,7 +43,7 @@
                                                 Tambah
                                             </i></a></div>
                                     <div class="col-md-6"> <a href="{{ route('pdf.barang') }}"
-                                            class="btn btn-primary ">Cetak
+                                            class="btn btn-primary ms-2">Cetak
                                             Laporan</a></div>
                                 </div>
                             </td>

@@ -5,16 +5,15 @@
         <div class="card-body">
 
             <h1 class="mb-3 mt-3">Hi, Welcome {{ auth()->user()->username }}!</h1>
-            <h2 class="mt-5">What to do</h2>
-            <div class="row mt-5">
+            <h2 class="mt-5">What to do :</h2>
+            <div class="row mt-3">
 
                 <div class="col-md">
                     <div class="card text-bg-primary mb-3" style="max-width: 18rem;">
 
                         <div class="card-body">
                             <h5 class="card-title text-light">Data Lelang</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                                the card's content.</p>
+                            <p class="card-text">Data use for manage this website component</p>
                             <a href="{{ route('table.lelang') }}" class="stretched-link"></a>
                         </div>
                     </div>
@@ -24,8 +23,7 @@
 
                         <div class="card-body">
                             <h5 class="card-title text-light">Data Histori Lelang</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                                the card's content.</p>
+                            <p class="card-text">Data use for manage this website component</p>
                             <a href="{{ route('table.datahistory') }}" class="stretched-link"></a>
                         </div>
                     </div>
@@ -35,9 +33,7 @@
 
                         <div class="card-body">
                             <h5 class="card-title text-light">Data Barang</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of
-                                the card's content.</p>
+                            <p class="card-text">Data use for manage this website component</p>
                             <a href="{{ route('table.databarang') }}" class="stretched-link"></a>
                         </div>
                     </div>
@@ -50,9 +46,7 @@
 
                             <div class="card-body">
                                 <h5 class="card-title text-light">Data Petugas</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                    of
-                                    the card's content.</p>
+                                <p class="card-text">Data use for manage this website component</p>
                                 <a href="{{ route('table.datapetugas') }}" class="stretched-link"></a>
                             </div>
                         </div>
@@ -63,10 +57,7 @@
 
                                 <div class="card-body">
                                     <h5 class="card-title text-light">Data Masyarakat (User)</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the
-                                        bulk
-                                        of
-                                        the card's content.</p>
+                                    <p class="card-text">Data use for manage this website component</p>
                                     <a href="{{ route('table.datauser') }}" class="stretched-link"></a>
                                 </div>
                             </div>

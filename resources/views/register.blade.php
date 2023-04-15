@@ -83,25 +83,50 @@
                                 <div class="form-outline mb-4">
                                     <label class="form-label" for="form3Example3">Email</label>
                                     <input type="text" name="email" id="form3Example3" class="form-control" />
+                                    @if ($errors->has('email'))
+                                        <span class="invalid feedback"role="alert">
+                                            <p>{{ $errors->first('email') }}.</p>
+                                        </span>
+                                    @endif
                                 </div>
                                 <div class="form-outline mb-4">
                                     <label class="form-label" for="form3Example3">Nama Lengkap</label>
                                     <input type="text" name="nama_lengkap" id="form3Example3" class="form-control" />
+                                    @if ($errors->has('nama_lengkap'))
+                                        <span class="invalid feedback"role="alert">
+                                            <p>{{ $errors->first('nama_lengkap') }}.</p>
+                                        </span>
+                                    @endif
                                 </div>
                                 <div class="form-outline mb-4">
                                     <label class="form-label" for="form3Example3">Username</label>
                                     <input type="text" name="username" id="form3Example3" class="form-control" />
+                                    @if ($errors->has('username'))
+                                        <span class="invalid feedback"role="alert">
+                                            <p>{{ $errors->first('username') }}.</p>
+                                        </span>
+                                    @endif
                                 </div>
 
                                 <!-- Password input -->
                                 <div class="form-outline mb-4">
                                     <label class="form-label" for="form3Example4">Password</label>
                                     <input type="password" name="password" id="form3Example4" class="form-control" />
+                                    @if ($errors->has('password'))
+                                        <span class="invalid feedback"role="alert">
+                                            <p>{{ $errors->first('password') }}.</p>
+                                        </span>
+                                    @endif
                                 </div>
                                 <div class="form-outline mb-4">
                                     <label class="form-label" for="form3Example4">Confirm Password</label>
                                     <input type="password" name="confirm_password" id="form3Example4"
                                         class="form-control" />
+                                    @if ($errors->has('confirm_password'))
+                                        <span class="invalid feedback"role="alert">
+                                            <p>{{ $errors->first('confirm_password') }}.</p>
+                                        </span>
+                                    @endif
                                 </div>
                                 <input type="text" name="level" value="User" hidden>
 
@@ -113,9 +138,16 @@
                                         Setuju dengan <a href="/ketentuan" style="text-decoration: none">Ketentuan</a> &
                                         <a href="/ketentuan" style="text-decoration: none">Persyaratan</a>
                                     </label>
+                                    <br>
+                                    @if ($errors->has('check'))
+                                        <span class="invalid feedback"role="alert">
+                                            <p>{{ $errors->first('check') }}.</p>
+                                        </span>
+                                    @endif
                                 </div>
                                 <div class="text-center">
-                                    <p>Already have account? <a href="#" style="text-decoration: none">Sign In</a>
+                                    <p>Already have account? <a href="{{ route('login') }}"
+                                            style="text-decoration: none">Sign In</a>
                                     </p>
 
                                 </div>

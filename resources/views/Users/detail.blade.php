@@ -12,9 +12,12 @@
             </div>
         </div>
     </header>
+
     @foreach ($lelang as $item)
         <section class="latest-podcast-section section-padding pb-0" id="section_2">
             <div class="container">
+
+
                 <div class="row justify-content-center">
 
                     <div class="col-lg-10 col-12 col-md-10">
@@ -33,6 +36,7 @@
                                 <div class="custom-block-info">
                                     <h2 class="mb-2">{{ $item->nama_barang }}</h2>
                                     <h3 class="mb-2">Rp {{ $item->harga_akhir }}</h3>
+                                    <p class="badge my-3 fs-5">Batas Waktu : {{ $item->tgl_lelang }}</p>
                                     <p>Status : <br>
                                         @if ($item->status == 'dibuka')
                                             <span class="badge text-bg-success">Dibuka</span>
@@ -78,20 +82,25 @@
                             <input type="text" hidden name="id_user" value="{{ auth()->user()->id_user }}">
 
                             <div class="input-group flex-nowrap mb-3">
-                                <span class="input-group-text" style="background-color:darkgray; width: 12rem;" id="addon-wrapping">Penawaran Terakhir</span>
-                                <input type="text" class="form-control" style="background-color:darkgray; width: 17rem;" disabled placeholder=""
+                                <span class="input-group-text" style="background-color:darkgray; width: 12rem;"
+                                    id="addon-wrapping">Penawaran Terakhir</span>
+                                <input type="text" class="form-control"
+                                    style="background-color:darkgray; width: 17rem;" disabled placeholder=""
                                     value="Rp {{ $item->harga_akhir }}" aria-label=""
                                     aria-describedby="addon-wrapping">
                             </div>
                             <div class="input-group flex-nowrap">
-                                <span class="input-group-text" style="width: 12rem;" id="addon-wrapping">Penawaran Anda</span>
-                                <input type="number" step="0.01" min="{{ $item->harga_akhir }}" style="width: 17rem;"
+                                <span class="input-group-text" style="width: 12rem;" id="addon-wrapping">Penawaran
+                                    Anda</span>
+                                <input type="number" step="0.01" min="{{ $item->harga_akhir }}"
+                                    style="width: 17rem;"
                                     value="{{ $item->harga_akhir > 0 ? $item->harga_akhir : '' }}" id="count"
                                     name="harga_akhir" class="form-control" placeholder="" aria-label=""
                                     aria-describedby="addon-wrapping">
                             </div>
                             <div class="input-group flex-nowrap mt-4">
-                                <span class="input-group-text" style="width: 12rem;" id="addon-wrapping">Beli Langsung</span>
+                                <span class="input-group-text" style="width: 12rem;" id="addon-wrapping">Beli
+                                    Langsung</span>
                                 <button onclick="change1({{ $item->harga_awal }})" style="width: 17rem;" type="button"
                                     value="{{ $item->harga_awal }}"
                                     class="btn btn-light">{{ $item->harga_awal }}</button>

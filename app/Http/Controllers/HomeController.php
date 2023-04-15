@@ -66,7 +66,7 @@ class HomeController extends Controller
     }
     public function data_historytable()
     {
-        $history = History::select('*')
+        $history = History::select('history_lelang.id_history', 'history_lelang.created_at', 'tb_barang.nama_barang', 'tb_barang.harga_awal', 'tb_lelang.harga_akhir', 'tb_user.nama_lengkap', 'tb_user.email', 'history_lelang.penawaran_harga')
             ->join('tb_barang', 'tb_barang.id_barang', '=', 'history_lelang.id_barang')
             ->join('tb_user', 'tb_user.id_user', '=', 'history_lelang.id_user')
             ->join('tb_lelang', 'tb_lelang.id_lelang', '=', 'history_lelang.id_lelang')
@@ -79,11 +79,12 @@ class HomeController extends Controller
 
         ];
 
+
         return view('Admin.table_history', ['history' => $history])->with($data);
     }
     public function data_historyuser($id_user)
     {
-        $history = History::select('*')
+        $history = History::select('history_lelang.created_at', 'tb_barang.nama_barang', 'history_lelang.penawaran_harga')
             ->where('history_lelang.id_user', $id_user)
             ->join('tb_barang', 'tb_barang.id_barang', '=', 'history_lelang.id_barang')
             ->join('tb_user', 'tb_user.id_user', '=', 'history_lelang.id_user')

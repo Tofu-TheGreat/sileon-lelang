@@ -1,9 +1,5 @@
 <script src="js/app.js"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#myTable').DataTable();
-    });
-</script>
+
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
