@@ -9,7 +9,7 @@
                         <tr>
 
                             <th>Barang</th>
-                            <th>Tanggal Lelang</th>
+                            <th>Batas Lelang</th>
                             <th>Harga Akhir</th>
                             {{-- <th>Peserta Lelang</th> --}}
                             <th>Petugas</th>

@@ -9,6 +9,7 @@ use App\Models\Barang;
 use App\Models\History;
 use App\Models\Lelang;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class LelangController extends Controller
 {
@@ -17,7 +18,7 @@ class LelangController extends Controller
     {
         $barang = Barang::all();
 
-        $pdf = barang ::loadview('Admin.laporanBarang_pdf', ['barang' => $barang]);
+        $pdf = PDF::loadview('Admin.laporanBarang_pdf', ['barang' => $barang]);
         return $pdf->download('laporan-barang.pdf');
     }
     public function cetakpdf_pemenang($id_history)
@@ -28,7 +29,7 @@ class LelangController extends Controller
             ->join('tb_lelang', 'tb_lelang.id_lelang', '=', 'history_lelang.id_lelang')
             ->get();
 
-        $pdf = barang::loadview('Admin.laporanPemenang_pdf', ['history' => $history]);
+        $pdf = PDF::loadview('Admin.laporanPemenang_pdf', ['history' => $history]);
         return $pdf->download('laporan-pemenang.pdf');
     }
     //END PDF
@@ -122,7 +123,8 @@ class LelangController extends Controller
             'penawaran_harga' => $request->harga_akhir
         ]);
 
-        return redirect()->intended('/banner');
+
+        return redirect()->intended('/');
     }
 
     public function detail($id_lelang)

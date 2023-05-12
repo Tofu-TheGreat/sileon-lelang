@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg">
     <div class="container">
-        <a class="navbar-brand me-lg-5 me-0" href="/banner">
+        <a class="navbar-brand me-lg-5 me-0" href="/">
             <img src="../images/logo-sileon.png" class="logo-image img-fluid" alt="SiLeOn" style="width: 200px;">
         </a>
 
@@ -20,72 +20,104 @@
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        @if (auth()->check())
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-lg-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/histori/{{ auth()->user()->id_user }}">Histori</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('logout.admin') }}">Log Out</a>
+                    </li>
+                    {{-- <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="modal" data-bs-target="#exampleModal">Profile</a>
+                    </li> --}}
 
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-lg-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/banner">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/about">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/histori/{{ auth()->user()->id_user }}">Histori</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/contact">Contact</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('logout.admin') }}">Log Out</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#exampleModal">Profile</a>
-                </li>
 
+                </ul>
 
-            </ul>
-
-            <!-- <div class="ms-4">
+                <!-- <div class="ms-4">
                 <a href="#section_2" class="btn custom-btn custom-border-btn smoothscroll">Get started</a>
             </div> -->
-        </div>
+            </div>
+        @else
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-lg-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">Log In</a>
+                    </li>
+                    {{-- <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="modal" data-bs-target="#exampleModal">Profile</a>
+                    </li> --}}
+
+
+                </ul>
+
+                <!-- <div class="ms-4">
+            <a href="#section_2" class="btn custom-btn custom-border-btn smoothscroll">Get started</a>
+        </div> -->
+            </div>
+        @endif
+
     </div>
 </nav>
 
 <!-- Button trigger modal -->
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="">
+@if (auth()->check())
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="">
+            <div class="">
 
-            <div class="container">
+                <div class="container">
 
-                <div class="row d-flex justify-content-center">
+                    <div class="row d-flex justify-content-center">
 
-                    <div class="col-md-7">
+                        <div class="col-md-7">
 
-                        <div class="card p-3 py-4 border-0 modal-dialog ">
-                            <div class="modal-content  border-0">
-                                <div class="modal-body ">
-                                    <div class="text-center">
-                                        <img src="https://img.inews.co.id/media/600/files/networks/2022/05/25/2de52_son-heung-min.jpg"
-                                            width="200" class="rounded-circle">
-                                    </div>
+                            <div class="card p-3 py-4 border-0 modal-dialog ">
+                                <div class="modal-content  border-0">
+                                    <div class="modal-body ">
+                                        <div class="text-center">
+                                            <img src="https://img.inews.co.id/media/600/files/networks/2022/05/25/2de52_son-heung-min.jpg"
+                                                width="200" class="rounded-circle">
+                                        </div>
 
-                                    <div class="text-center mt-3">
-                                        <h5 class="mt-2 mb-0">{{ auth()->user()->nama_lengkap }}</h5>
-                                        <span>{{ auth()->user()->level }}</span><br>
-                                        <span>{{ auth()->user()->email }}</span>
+                                        <div class="text-center mt-3">
+                                            <h5 class="mt-2 mb-0">{{ auth()->user()->nama_lengkap }}</h5>
+                                            <span>{{ auth()->user()->level }}</span><br>
+                                            <span>{{ auth()->user()->email }}</span>
 
 
+                                        </div>
                                     </div>
                                 </div>
+
+
+
+
+
                             </div>
-
-
-
-
 
                         </div>
 
@@ -94,11 +126,9 @@
                 </div>
 
             </div>
-
         </div>
     </div>
-</div>
-
+@endif
 <style>
     .card {
         border: none;

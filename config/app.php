@@ -123,7 +123,7 @@ return [
 
     'key' => env('APP_KEY'),
 
-    'cipher' => 'AES-256-CBC',
+    'cipher' => 'aes-256-gcm',
 
     /*
     |--------------------------------------------------------------------------
@@ -197,6 +197,7 @@ return [
 
     ],
 
+
     /*
     |--------------------------------------------------------------------------
     | Class Aliases
@@ -211,6 +212,7 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
+        'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
     ])->toArray(),
 
 ];

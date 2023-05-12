@@ -47,10 +47,16 @@
                                     <p>Deskripsi : <br>
                                         {{ $item->deskripsi_barang }}
                                     </p>
-                                    <button type="button" class="btn btn-primary mt-3 rounded-5" data-bs-toggle="modal"
-                                        data-bs-target="#Tawar">
-                                        Lakukan Penawaran
-                                    </button>
+                                    @if ($item->status == 'dibuka')
+                                        <button type="button" class="btn btn-primary mt-3 rounded-5" data-bs-toggle="modal"
+                                            data-bs-target="#Tawar">
+                                            Lakukan Penawaran
+                                        </button>
+                                    @elseif ($item->status == 'ditutup')
+                                        <button type="button" class="btn btn-danger mt-3 rounded-5">
+                                            Bid Ditutup!
+                                        </button>
+                                    @endif
                                 </div>
                             </div>
 
@@ -66,6 +72,7 @@
 
 @foreach ($lelang as $item)
     <!-- Modal -->
+
     <div class="modal fade" id="Tawar" tabindex="-1" aria-labelledby="TawarLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -95,20 +102,17 @@
                                 <input type="number" step="0.01" min="{{ $item->harga_akhir }}"
                                     style="width: 17rem;"
                                     value="{{ $item->harga_akhir > 0 ? $item->harga_akhir : '' }}" id="count"
-                                    name="harga_akhir" class="form-control" placeholder="" aria-label=""
+                                    name="harga_akhir" class="form-control uang" placeholder="" aria-label=""
                                     aria-describedby="addon-wrapping">
                             </div>
-                            <div class="input-group flex-nowrap mt-4">
-                                <span class="input-group-text" style="width: 12rem;" id="addon-wrapping">Beli
-                                    Langsung</span>
-                                <button onclick="change1({{ $item->harga_awal }})" style="width: 17rem;" type="button"
-                                    value="{{ $item->harga_awal }}"
-                                    class="btn btn-light">{{ $item->harga_awal }}</button>
+                            <div class="mt-4">
+                                <p><b><i class="bi bi-exclamation-circle-fill me-1" style="color:red"></i>
+                                        BID berarti anda setuju untuk mengikuti lelang</b></p>
                             </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-                            <button type="submit" class="btn btn-primary">KONFIRMASI!</button>
+                            <button type="submit" class="btn btn-primary">BID!</button>
                         </div>
                     </fieldset>
                 </form>
@@ -116,3 +120,4 @@
         </div>
     </div>
 @endforeach
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">

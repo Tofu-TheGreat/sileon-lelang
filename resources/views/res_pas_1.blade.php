@@ -13,18 +13,7 @@
 <body>
     <!-- Section: Design Block -->
     <section class="background-radial-gradient overflow-hidden">
-        @if (session('error'))
-            <div class="alert  alert-danger alert-dismissible fade show container-fluid" role="alert">
-                {{ session('error') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        @endif
-        @if (session('status'))
-            <div class="alert  alert-success alert-dismissible fade show container-fluid" role="alert">
-                {{ session('status') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        @endif
+
         <style>
             .background-radial-gradient {
                 background-color: hsl(218, 41%, 15%);
@@ -87,32 +76,22 @@
 
                     <div class="card bg-glass">
                         <div class="card-body px-4 py-5 px-md-5">
-                            <form method="post" action="{{ route('login.action') }}">
+                            <form method="post" action="{{ route('password.email') }}">
                                 @csrf
                                 <!-- 2 column grid layout with text inputs for the first and last names -->
 
 
                                 <!-- Email input -->
                                 <div class="form-outline mb-4">
-                                    <label class="form-label" for="form3Example3">Username</label>
-                                    <input type="text" name="username" id="form3Example3" class="form-control" />
-                                    @if ($errors->has('username'))
+                                    <label class="form-label" for="form3Example3">Email</label>
+                                    <input type="email" name="email" id="form3Example3" class="form-control" />
+                                    @if ($errors->has('email'))
                                         <span class="invalid feedback"role="alert">
-                                            <p>{{ $errors->first('username') }}.</p>
+                                            <p>{{ $errors->first('email') }}.</p>
                                         </span>
                                     @endif
                                 </div>
 
-                                <!-- Password input -->
-                                <div class="form-outline mb-4">
-                                    <label class="form-label" for="form3Example4">Password</label>
-                                    <input type="password" name="password" id="form3Example4" class="form-control" />
-                                    @if ($errors->has('password'))
-                                        <span class="invalid feedback"role="alert">
-                                            <p>{{ $errors->first('password') }}.</p>
-                                        </span>
-                                    @endif
-                                </div>
 
                                 <!-- Checkbox -->
                                 <div class="form-check d-flex justify-content-center mb-4">
@@ -130,22 +109,14 @@
                                         </span>
                                     @endif
                                 </div>
-                                <div class="text-center">
-                                    <p>Don't have account? <a href="/register_user" style="text-decoration: none">Sign
-                                            Up</a>
-                                    </p>
-
-                                </div>
-                                <div class="text-center">
-                                    <p><a href="/forgot-password" style="text-decoration: none">Forgot your passwords?
-                                        </a>
-                                    </p>
-
-                                </div>
-
+                                @if (session('status'))
+                                    <span class="invalid feedback"role="alert">
+                                        <p>{{ session('status') }}.</p>
+                                    </span>
+                                @endif
                                 <!-- Submit button -->
                                 <button type="submit" class="btn btn-primary btn-block mb-4">
-                                    Sign in
+                                    Send Token
                                 </button>
 
                                 <!-- Register buttons -->

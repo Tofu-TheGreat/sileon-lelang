@@ -19,12 +19,6 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
-        @if (session('status'))
-            <div class="alert  alert-success alert-dismissible fade show container-fluid" role="alert">
-                {{ session('status') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        @endif
         <style>
             .background-radial-gradient {
                 background-color: hsl(218, 41%, 15%);
@@ -76,7 +70,7 @@
                         <span style="color: hsl(218, 81%, 75%)">Untuk Kamu!</span>
                     </h1>
                     <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
-                        <img src="images/logo-sileon.png" class="logo-image img-fluid" alt="SiLeOn"
+                        <img src="../../images/logo-sileon.png" class="logo-image img-fluid" alt="SiLeOn"
                             style="width: 300px;">
                     </p>
                 </div>
@@ -87,29 +81,33 @@
 
                     <div class="card bg-glass">
                         <div class="card-body px-4 py-5 px-md-5">
-                            <form method="post" action="{{ route('login.action') }}">
+                            <form method="post" action="{{ route('password.update') }}">
                                 @csrf
                                 <!-- 2 column grid layout with text inputs for the first and last names -->
 
 
-                                <!-- Email input -->
-                                <div class="form-outline mb-4">
-                                    <label class="form-label" for="form3Example3">Username</label>
-                                    <input type="text" name="username" id="form3Example3" class="form-control" />
-                                    @if ($errors->has('username'))
-                                        <span class="invalid feedback"role="alert">
-                                            <p>{{ $errors->first('username') }}.</p>
-                                        </span>
-                                    @endif
-                                </div>
+
 
                                 <!-- Password input -->
+                                <input type="text" hidden name="email" value="{{ request()->email }}">
+                                <input type="text" hidden name="token" value="{{ request()->token }}">
                                 <div class="form-outline mb-4">
                                     <label class="form-label" for="form3Example4">Password</label>
                                     <input type="password" name="password" id="form3Example4" class="form-control" />
                                     @if ($errors->has('password'))
                                         <span class="invalid feedback"role="alert">
                                             <p>{{ $errors->first('password') }}.</p>
+                                        </span>
+                                    @endif
+                                </div>
+                                <!-- Password input -->
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="form3Example4">Confirm Password</label>
+                                    <input type="password" name="password_confirmation" id="form3Example4"
+                                        class="form-control" />
+                                    @if ($errors->has('password_confirmation'))
+                                        <span class="invalid feedback"role="alert">
+                                            <p>{{ $errors->first('password_confirmation') }}.</p>
                                         </span>
                                     @endif
                                 </div>
@@ -130,22 +128,15 @@
                                         </span>
                                     @endif
                                 </div>
-                                <div class="text-center">
-                                    <p>Don't have account? <a href="/register_user" style="text-decoration: none">Sign
-                                            Up</a>
-                                    </p>
 
-                                </div>
-                                <div class="text-center">
-                                    <p><a href="/forgot-password" style="text-decoration: none">Forgot your passwords?
-                                        </a>
-                                    </p>
-
-                                </div>
-
+                                @if (session('status'))
+                                    <span class="invalid feedback"role="alert">
+                                        <p>{{ session('status') }}.</p>
+                                    </span>
+                                @endif
                                 <!-- Submit button -->
                                 <button type="submit" class="btn btn-primary btn-block mb-4">
-                                    Sign in
+                                    Submit
                                 </button>
 
                                 <!-- Register buttons -->

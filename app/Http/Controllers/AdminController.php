@@ -37,18 +37,10 @@ class AdminController extends Controller
             'password' => Hash::make($request->password),
             'level' => $request->level,
         ]);
-        if (auth()->attempt(array('username' => $request->username, 'password' => $request->password))) {
-            if (auth()->user()->level == 'Admin') {
-                return redirect()->route('login');
-            } else if (auth()->user()->level == 'Petugas') {
-                return redirect()->route('table.datapetugas');
-            } else if (auth()->user()->level == 'User') {
-
-                return redirect()->route('login');
-            }
-        } else {
-            return redirect()->route('register')
-                ->with('error', 'Error ');
+        if ($request->level == 'Petugas') {
+            return redirect()->route('table.datapetugas');
+        } else if ($request->level == 'User') {
+            return redirect()->route('login');
         }
     }
 
@@ -98,11 +90,11 @@ class AdminController extends Controller
             } else if (auth()->user()->level == 'Petugas') {
                 return redirect()->intended('admin_home')->with($data);
             } else  if (auth()->user()->level == 'User') {
-                return redirect()->intended('/banner');
+                return redirect()->intended('/');
             }
         } else {
             return redirect()->route('login')
-                ->with('error', 'Email-Address And Password Are Wrong.');
+                ->with('error', 'Email-Address or Password Are Wrong.');
         }
     }
 

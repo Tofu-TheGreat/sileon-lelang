@@ -18,7 +18,11 @@ class HomeController extends Controller
     {
         $this->middleware('auth');
     }
+    public function index()
+    {
 
+        return view('login', ['title' => 'a', 'subTitle' => 'b']);
+    }
     public function admin_home()
     {
         $data = [
