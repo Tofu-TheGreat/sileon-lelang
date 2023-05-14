@@ -47,6 +47,11 @@
                                     <p>Deskripsi : <br>
                                         {{ $item->deskripsi_barang }}
                                     </p>
+                                    <p>Kategori : <br>
+                                        {{ $item->kategori == '1' ? 'Elektronik' : '' }}
+                                        {{ $item->kategori == '2' ? 'Fashion' : '' }}{{ $item->kategori == '3' ? 'Gadget' : '' }}
+                                        {{ $item->kategori == '4' ? 'Vehicle' : '' }}{{ $item->kategori == '5' ? 'Game dan hobi' : '' }}
+                                    </p>
                                     @if ($item->status == 'dibuka')
                                         <button type="button" class="btn btn-primary mt-3 rounded-5" data-bs-toggle="modal"
                                             data-bs-target="#Tawar">
@@ -104,6 +109,7 @@
                                     value="{{ $item->harga_akhir > 0 ? $item->harga_akhir : '' }}" id="count"
                                     name="harga_akhir" class="form-control uang" placeholder="" aria-label=""
                                     aria-describedby="addon-wrapping">
+
                             </div>
                             <div class="mt-4">
                                 <p><b><i class="bi bi-exclamation-circle-fill me-1" style="color:red"></i>
@@ -121,3 +127,5 @@
     </div>
 @endforeach
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

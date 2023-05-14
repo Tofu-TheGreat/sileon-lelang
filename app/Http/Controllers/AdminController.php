@@ -41,6 +41,8 @@ class AdminController extends Controller
             return redirect()->route('table.datapetugas');
         } else if ($request->level == 'User') {
             return redirect()->route('login');
+        } else if ($request->level == 'Admin') {
+            return redirect()->route('login');
         }
     }
 

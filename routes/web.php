@@ -14,6 +14,10 @@ use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Contracts\Mail\Mailable;
+use App\Mail\ContactForm;
+use App\Models\Email;
 
 
 
@@ -61,6 +65,24 @@ Route::get('/contact', function () {
 Route::get('/ketentuan', function () {
     return view('Users.ketentuan',);
 });
+
+Route::post('/contact', function (Request $request) {
+    $request->validate([
+        'name' => 'required',
+        'email' => 'required',
+        'message' => 'required'
+    ]);
+    $details = Email::create([
+        'name' => $request->name,
+        'email' => $request->email,
+        'message' => $request->message
+    ]);
+
+
+
+    return redirect()->intended('/contact')->with('message', 'Your message has been sent!');
+})->name('emailing');
+
 
 
 Route::get('/forgot-password', function () {
@@ -125,6 +147,7 @@ Route::get('profile', [HomeController::class, 'profile'])->name('profile');
 
 
 Route::get('search', [HomeController::class, 'search'])->name('search.action');
+Route::get('search_filter', [HomeController::class, 'search_filter'])->name('searchfilter.action');
 
 
 
@@ -149,6 +172,7 @@ Route::middleware(['auth', 'petugas:Admin,Petugas'])->group(function () {
 
     //User dan Petugas
     Route::get('data_petugas', [HomeController::class, 'data_petugastable'])->name('table.datapetugas');
+    Route::get('inbox', [HomeController::class, 'inbox'])->name('show.inbox');
     Route::get('data_user', [HomeController::class, 'data_usertable'])->name('table.datauser');
     Route::get('tambah_petugas', [HomeController::class, 'tambah'])->name('tambah.petugas');
     Route::get('/ubah_user_page/{id_user}', [HomeController::class, 'ubah_user'])->name('ubah.user');
@@ -168,6 +192,7 @@ Route::middleware(['auth', 'petugas:Admin,Petugas'])->group(function () {
     Route::post('update_barang', [BarangController::class, 'update_barang'])->name('update.barang');
     Route::get('/delete_lelang/{id_lelang}', [LelangController::class, 'delete_lelang'])->name('delete.lelang');
     Route::get('/delete_barang/{id_barang}', [BarangController::class, 'delete_barang'])->name('delete.barang');
+    Route::get('/delete_email/{name}', [BarangController::class, 'delete_email'])->name('delete.email');
     Route::get('/delete_history/{id_history}', [HomeController::class, 'delete_history'])->name('delete.history');
     Route::get('/cetak_pdf_barang', [LelangController::class, 'cetakpdf_barang'])->name('pdf.barang');
     Route::get('/cetak_pdf_pemenang/{id_history}', [LelangController::class, 'cetakpdf_pemenang'])->name('pdf.pemenang');

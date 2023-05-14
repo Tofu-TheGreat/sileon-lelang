@@ -42,11 +42,11 @@
             <div class="row mt-2">
                 @if (auth()->user()->level == 'Admin')
                     <div class="col-md">
-                        <div class="card text-bg-primary mb-3" style="max-width: 18rem;">
+                        <div class="card text-bg-success mb-3" style="max-width: 18rem;">
 
                             <div class="card-body">
                                 <h5 class="card-title text-light">Data Petugas</h5>
-                                <p class="card-text">Data use for manage this website component</p>
+                                <p class="card-text text-light">Data use for manage this website component</p>
                                 <a href="{{ route('table.datapetugas') }}" class="stretched-link"></a>
                             </div>
                         </div>
@@ -57,17 +57,26 @@
 
                                 <div class="card-body">
                                     <h5 class="card-title text-light">Data Masyarakat (User)</h5>
-                                    <p class="card-text">Data use for manage this website component</p>
+                                    <p class="card-text text-light">Data use for manage this website component</p>
                                     <a href="{{ route('table.datauser') }}" class="stretched-link"></a>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 @else
                 @endif
 
-                <div class="col-md"></div>
+                <div class="col-md">
+                    <div class="card text-bg-info mb-3" style="max-width: 18rem;">
 
+                        <div class="card-body">
+                            <h5 class="card-title text-light">Inbox</h5>
+                            <p class="card-text text-light">Data use for manage this website component</p>
+                            <a href="{{ route('show.inbox') }}" class="stretched-link"></a>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="mt-3">
                 <h2 class="mt-5">Ongoing Lelang</h2>

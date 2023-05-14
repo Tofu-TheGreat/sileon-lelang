@@ -123,9 +123,68 @@
             <div class="row">
 
                 <div class="col-lg-12 col-12">
+
                     <div class="section-title-wrap mb-5">
                         <h4 class="section-title">Cari yang Kamu mau!</h4>
                     </div>
+                    <div class="dropdown mb-3">
+                        <a class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-funnel"></i>Filter
+                        </a>
+                        <ul class="dropdown-menu">
+                            <form action="{{ route('searchfilter.action') }}" method="get">
+                                <li class="dropdown-item">
+                                    <div class="form-check">
+                                        <input name="kategori[]" class="form-check-input" type="checkbox" value="1"
+                                            id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            Elektronik
+                                        </label>
+                                    </div>
+                                </li>
+                                <li class="dropdown-item">
+                                    <div class="form-check">
+                                        <input name="kategori[]" class="form-check-input" type="checkbox" value="2"
+                                            id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            Fashion
+                                        </label>
+                                    </div>
+                                </li>
+                                <li class="dropdown-item">
+                                    <div class="form-check">
+                                        <input name="kategori[]" class="form-check-input" type="checkbox" value="3"
+                                            id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            Gadget
+                                        </label>
+                                    </div>
+                                </li>
+                                <li class="dropdown-item">
+                                    <div class="form-check">
+                                        <input name="kategori[]" class="form-check-input" type="checkbox" value="4"
+                                            id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            Vehicle
+                                        </label>
+                                    </div>
+                                </li>
+                                <li class="dropdown-item">
+                                    <div class="form-check">
+                                        <input name="kategori[]" class="form-check-input" type="checkbox" value="5"
+                                            id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            Game dan hobi
+                                        </label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <button type="submit" class="btn btn-light dropdown-item">Search</button>
+                                </li>
+                            </form>
+                        </ul>
+                    </div>
+
                 </div>
                 @foreach ($lelang as $item)
                     <div class="col-lg-4 col-md-8 col-12 mb-4 mb-lg-0">

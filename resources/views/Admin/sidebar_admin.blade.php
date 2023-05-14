@@ -14,19 +14,21 @@
                     <a class="sidebar-link" href="{{ route('Admin.index') }}">
                         <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Home</span>
                     </a>
-                </li>z
+                </li>
                 <li class="sidebar-header">
                     Tables
                 </li>
                 @if (auth()->user()->level == 'Admin')
                     <li class="sidebar-item {{ $subTitle === 'Data_petugas' ? 'active' : '' }}">
                         <a class="sidebar-link" href="{{ route('table.datapetugas') }}">
-                            <i class="bi bi-diagram-2 align-middle"></i> <span class="align-middle">Data Petugas</span>
+                            <i class="bi bi-person-rolodex align-middle"></i> <span class="align-middle">Data
+                                Petugas</span>
                         </a>
                     </li>
                     <li class="sidebar-item {{ $subTitle === 'Data User' ? 'active' : '' }}">
                         <a class="sidebar-link" href="{{ route('table.datauser') }}">
-                            <i class="bi bi-diagram-2 align-middle"></i> <span class="align-middle">Data User</span>
+                            <i class="bi bi-person-hearts align-middle"></i></i> <span class="align-middle">Data
+                                User</span>
                         </a>
                     </li>
                 @else
@@ -34,17 +36,28 @@
 
                 <li class="sidebar-item  {{ $subTitle === 'Data Barang' ? 'active' : '' }}">
                     <a class="sidebar-link" href="{{ route('table.databarang') }}">
-                        <i class="bi bi-diagram-2 align-middle"></i> <span class="align-middle">Data Barang</span>
+                        <i class="bi bi-box-seam align-middle"></i></i> <span class="align-middle">Data Barang</span>
                     </a>
                 </li>
                 <li class="sidebar-item {{ $subTitle === 'Lelang' ? 'active' : '' }}">
                     <a class="sidebar-link" href="{{ route('table.lelang') }}">
-                        <i class="bi bi-diagram-2 align-middle"></i> <span class="align-middle">Data Lelang</span>
+                        <i class="bi bi-hammer align-middle"></i> <span class="align-middle">Data Lelang</span>
                     </a>
                 </li>
-                <li class="sidebar-item {{ $subTitle === 'Data History' ? 'active' : '' }}"">
+                <li class="sidebar-item {{ $subTitle === 'Data History' ? 'active' : '' }}">
                     <a class="sidebar-link" href="{{ route('table.datahistory') }}">
-                        <i class="bi bi-diagram-2 align-middle"></i> <span class="align-middle">History Lelang</span>
+                        <i class="bi bi-clock-history align-middle"></i> <span class="align-middle">History
+                            Lelang</span>
+                    </a>
+                </li>
+                <li class="sidebar-header">
+                    Other
+                </li>
+                <li class="sidebar-item {{ $subTitle === 'inbox' ? 'active' : '' }}">
+                    <a class="sidebar-link" href="{{ route('show.inbox') }}">
+                        <i class="bi bi-envelope align-middle"></i> <span class="align-middle">Inbox<span
+                                class="badge text-bg-danger ms-1"></span>
+                        </span>
                     </a>
                 </li>
 
