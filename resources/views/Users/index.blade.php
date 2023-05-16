@@ -18,11 +18,11 @@
                                 class="owl-carousel-image img-fluid" alt="">
 
                             <div class="owl-carousel-info">
-                                <h4 class="mb-2">
-                                    Candice
+                                <h6 class="mb-2">
+                                    Candice nut
                                     <img src="images/verified.png" class="owl-carousel-verified-image img-fluid"
                                         alt="">
-                                </h4>
+                                </h6>
 
                                 <span class="badge">Peserta Lelang</span>
 
@@ -84,7 +84,8 @@
                                 class="owl-carousel-image img-fluid" alt="">
 
                             <div class="owl-carousel-info">
-                                <h4 class="mb-2">Taylor</h4>
+                                <h4 class="mb-2">Taylor <img src="images/verified.png"
+                                        class="owl-carousel-verified-image img-fluid" alt=""></h4>
 
                                 <span class="badge">Peserta Lelang</span>
 

@@ -23,7 +23,7 @@
 
                                 <td>{{ $item->nama_barang }}</td>
                                 <td>{{ $item->tgl_lelang }}</td>
-                                <td>{{ $item->harga_akhir }}</td>
+                                <td>Rp. {{ $item->harga_akhir }}</td>
                                 {{-- <td>{{ $item->id_user }}</td> --}}
                                 <td>{{ $item->nama_lengkap }}</td>
                                 <td>{{ $item->status }}</td>

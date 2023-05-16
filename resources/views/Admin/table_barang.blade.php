@@ -22,7 +22,7 @@
                             <tr>
                                 <td>{{ $item->nama_barang }}</td>
                                 <td>{{ $item->tgl }}</td>
-                                <td>{{ $item->harga_awal }}</td>
+                                <td>Rp. {{ $item->harga_awal }}</td>
                                 <td>{{ $item->deskripsi_barang }}</td>
                                 <td>{{ $item->kategori == '1' ? 'Elektronik' : '' }}
                                     {{ $item->kategori == '2' ? 'Fashion' : '' }}{{ $item->kategori == '3' ? 'Gadget' : '' }}

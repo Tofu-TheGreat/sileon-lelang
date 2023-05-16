@@ -33,17 +33,19 @@
                     </li>
                 @else
                 @endif
-
+                @if (auth()->user()->level == 'Petugas')
+                    <li class="sidebar-item {{ $subTitle === 'Lelang' ? 'active' : '' }}">
+                        <a class="sidebar-link" href="{{ route('table.lelang') }}">
+                            <i class="bi bi-hammer align-middle"></i> <span class="align-middle">Data Lelang</span>
+                        </a>
+                    </li>
+                @endif
                 <li class="sidebar-item  {{ $subTitle === 'Data Barang' ? 'active' : '' }}">
                     <a class="sidebar-link" href="{{ route('table.databarang') }}">
                         <i class="bi bi-box-seam align-middle"></i></i> <span class="align-middle">Data Barang</span>
                     </a>
                 </li>
-                <li class="sidebar-item {{ $subTitle === 'Lelang' ? 'active' : '' }}">
-                    <a class="sidebar-link" href="{{ route('table.lelang') }}">
-                        <i class="bi bi-hammer align-middle"></i> <span class="align-middle">Data Lelang</span>
-                    </a>
-                </li>
+
                 <li class="sidebar-item {{ $subTitle === 'Data History' ? 'active' : '' }}">
                     <a class="sidebar-link" href="{{ route('table.datahistory') }}">
                         <i class="bi bi-clock-history align-middle"></i> <span class="align-middle">History

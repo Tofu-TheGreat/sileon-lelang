@@ -215,7 +215,7 @@ class HomeController extends Controller
                 'nama_lengkap' => $request->nama_lengkap,
                 'email' => $request->email,
                 'username' => $request->username,
-                'password' => Hash::make($request->password),
+                'password' => $request->password,
                 'level' => $request->level,
             ]);
         if ($request->level == 'User') {

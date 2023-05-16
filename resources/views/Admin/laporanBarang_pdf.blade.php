@@ -39,11 +39,11 @@
                     <td>{{ $i++ }}</td>
                     <td>{{ $p->nama_barang }}</td>
                     <td>{{ $p->tgl }}</td>
-                    <td>{{ $p->harga_awal }}</td>
+                    <td>Rp. {{ $p->harga_awal }}</td>
                     <td>{{ $p->deskripsi_barang }}</td>
-                    <td>{{ $item->kategori == '1' ? 'Elektronik' : '' }}
-                        {{ $item->kategori == '2' ? 'Fashion' : '' }}{{ $item->kategori == '3' ? 'Gadget' : '' }}
-                        {{ $item->kategori == '4' ? 'Vehicle' : '' }}{{ $item->kategori == '5' ? 'Game dan hobi' : '' }}
+                    <td>{{ $p->kategori == '1' ? 'Elektronik' : '' }}
+                        {{ $p->kategori == '2' ? 'Fashion' : '' }}{{ $p->kategori == '3' ? 'Gadget' : '' }}
+                        {{ $p->kategori == '4' ? 'Vehicle' : '' }}{{ $p->kategori == '5' ? 'Game dan hobi' : '' }}
                     </td>
                     <td><img src="image_save/{{ $p->gambar }}" height="150px" width="175px" alt=""></td>
                 </tr>

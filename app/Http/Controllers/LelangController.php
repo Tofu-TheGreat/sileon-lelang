@@ -123,8 +123,11 @@ class LelangController extends Controller
             'penawaran_harga' => $request->harga_akhir
         ]);
 
-
-        return redirect()->intended('/');
+        if ($lelang && $history) {
+            return redirect()->intended('/')->with(['message' => 'Berhasil bid!']);
+        } else {
+            return back()->with(['message' => 'Terjadi Kesalahan.'], 500);
+        }
     }
 
     public function detail($id_lelang)

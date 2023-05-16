@@ -52,12 +52,12 @@
                                         {{ $item->kategori == '2' ? 'Fashion' : '' }}{{ $item->kategori == '3' ? 'Gadget' : '' }}
                                         {{ $item->kategori == '4' ? 'Vehicle' : '' }}{{ $item->kategori == '5' ? 'Game dan hobi' : '' }}
                                     </p>
-                                    @if ($item->status == 'dibuka')
+                                    @if ($item->harga_akhir < $item->harga_awal)
                                         <button type="button" class="btn btn-primary mt-3 rounded-5" data-bs-toggle="modal"
                                             data-bs-target="#Tawar">
                                             Lakukan Penawaran
                                         </button>
-                                    @elseif ($item->status == 'ditutup')
+                                    @elseif ($item->harga_akhir >= $item->harga_awal)
                                         <button type="button" class="btn btn-danger mt-3 rounded-5">
                                             Bid Ditutup!
                                         </button>
@@ -85,7 +85,7 @@
                     <h1 class="modal-title fs-5" id="TawarLabel">Penawaran</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ route('action.bid') }}" method="post">
+                <form id="myForm" action="{{ route('action.bid') }}" method="post">
                     @csrf
                     <fieldset {{ $item->harga_akhir == $item->harga_awal ? 'disabled' : '' }}>
                         <div class="modal-body">
@@ -104,13 +104,17 @@
                             <div class="input-group flex-nowrap">
                                 <span class="input-group-text" style="width: 12rem;" id="addon-wrapping">Penawaran
                                     Anda</span>
-                                <input type="number" step="0.01" min="{{ $item->harga_akhir }}"
+                                <input type="number" step="5000" min="{{ $item->harga_akhir }}"
                                     style="width: 17rem;"
                                     value="{{ $item->harga_akhir > 0 ? $item->harga_akhir : '' }}" id="count"
                                     name="harga_akhir" class="form-control uang" placeholder="" aria-label=""
-                                    aria-describedby="addon-wrapping">
+                                    aria-describedby="addon-wrapping"><br>
+
 
                             </div>
+                            <span class="invalid feedback" role="alert">
+                                <p id="error-message"></p>
+                            </span>
                             <div class="mt-4">
                                 <p><b><i class="bi bi-exclamation-circle-fill me-1" style="color:red"></i>
                                         BID berarti anda setuju untuk mengikuti lelang</b></p>
@@ -129,3 +133,72 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    // Menggunakan jQuery untuk menangani penyerahan formulir
+    $(document).ready(function() {
+        $('#myForm').on('submit', function(e) {
+            e.preventDefault(); // Mencegah form dari submit normal
+
+            // Menampilkan SweetAlert loading
+            Swal.fire({
+                title: 'Loading...',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                onOpen: function() {
+                    Swal.showLoading();
+                }
+            });
+
+            // Submit formulir secara asinkron dengan menggunakan AJAX
+            $.ajax({
+                url: $(this).attr('action'),
+                type: 'POST',
+                data: $(this).serialize(),
+                success: function(response) {
+                    Swal.close(); // Menutup SweetAlert loading setelah permintaan berhasil
+                    // Tampilkan SweetAlert sukses
+                    Swal.fire({
+                        title: 'Sukses',
+                        text: response
+                            .message, // Anda dapat menyesuaikan pesan sukses dengan respons yang diterima dari server
+                        icon: 'success'
+                    }).then(function() {
+                        // Redirect ke halaman lain jika perlu
+                        window.location.href = '/';
+                    });
+                },
+                error: function(xhr) {
+                    Swal.close(); // Menutup SweetAlert loading jika terjadi kesalahan
+                    // Tampilkan SweetAlert error
+                    Swal.fire({
+                        title: 'Error',
+                        text: 'Terjadi kesalahan saat memproses permintaan.',
+                        icon: 'error'
+                    });
+                }
+            });
+        });
+    });
+</script>
+<script>
+    // Menggunakan JavaScript untuk menangani validasi input
+    var inputElement = document.getElementById('count');
+    var errorMessageElement = document.getElementById('error-message');
+
+    inputElement.addEventListener('input', function() {
+        var value = parseInt(inputElement.value);
+        var step = parseInt(inputElement.step);
+        var valid = (value % step) === 0;
+
+        // Tampilkan pesan kesalahan jika nilai tidak valid
+        if (!valid) {
+            var nearestLower = Math.floor(value / step) * step;
+            var nearestHigher = Math.ceil(value / step) * step;
+            errorMessageElement.textContent = 'Masukan Kelipatan 5000. Nilai terdekat adalah ' +
+                nearestHigher + '.';
+        } else {
+            errorMessageElement.textContent = '';
+        }
+    });
+</script>

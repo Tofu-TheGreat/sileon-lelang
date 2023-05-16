@@ -12,6 +12,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
-        "numbro": "^2.3.6"
+        "numbro": "^2.3.6",
+        "sweetalert": "^2.1.2"
     }
 }

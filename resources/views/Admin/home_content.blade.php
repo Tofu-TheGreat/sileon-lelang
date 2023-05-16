@@ -8,16 +8,7 @@
             <h2 class="mt-5">What to do :</h2>
             <div class="row mt-3">
 
-                <div class="col-md">
-                    <div class="card text-bg-primary mb-3" style="max-width: 18rem;">
 
-                        <div class="card-body">
-                            <h5 class="card-title text-light">Data Lelang</h5>
-                            <p class="card-text">Data use for manage this website component</p>
-                            <a href="{{ route('table.lelang') }}" class="stretched-link"></a>
-                        </div>
-                    </div>
-                </div>
                 <div class="col-md">
                     <div class="card text-bg-danger mb-3" style="max-width: 18rem;">
 
@@ -38,6 +29,20 @@
                         </div>
                     </div>
                 </div>
+                @if (auth()->user()->level == 'Petugas')
+                    <div class="col-md">
+                        <div class="card text-bg-primary mb-3" style="max-width: 18rem;">
+
+                            <div class="card-body">
+                                <h5 class="card-title text-light">Data Lelang</h5>
+                                <p class="card-text">Data use for manage this website component</p>
+                                <a href="{{ route('table.lelang') }}" class="stretched-link"></a>
+                            </div>
+                        </div>
+                    </div>
+                @else
+                    <div class="col-md"></div>
+                @endif
             </div>
             <div class="row mt-2">
                 @if (auth()->user()->level == 'Admin')

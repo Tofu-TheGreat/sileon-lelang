@@ -38,9 +38,10 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('logout.admin') }}">Log Out</a>
                     </li>
-                    <li class="nav-item">
-                            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modalprofil">Profil</a>
-                    </li>
+                    {{-- <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="modal"
+                            data-bs-target="#modalprofil">Profil</a>
+                    </li> --}}
 
 
                 </ul>
@@ -132,73 +133,76 @@
 
 
 
-<!-- Modal -->
-<div class="modal fade" id="modalprofil" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
-        <div class="modal-dialog modal-lg text-white" >
-        <div class="modal-content" >
+{{-- <!-- Modal -->
+<div class="modal fade" id="modalprofil" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg text-white">
+        <div class="modal-content">
             <div class="modal-header " style="background: rgba(0,159,255,1);text-shadow: 2px 2px rgb(39, 111, 156);">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Profil</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Profil</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body" style="background: rgb(0,159,255);
+            <div class="modal-body"
+                style="background: rgb(0,159,255);
             background: linear-gradient(180deg, rgba(0,159,255,1) 25%, rgba(51,213,247,1) 59%, rgba(115,226,250,1) 91%, rgba(255,255,255,1) 100%);">
-            <div class="row">
-                <div class="col">
-                    <div class="mb-3">
-                        <label class="form-label fw-bold" >Nama</label>
-                        <input type="text" class="form-control" id="nama" value="Joseph Joestar" readonly>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Nama</label>
+                            <input type="text" class="form-control" id="nama"
+                                value="{{ auth()->user()->nama_lengkap }}" readonly>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <label class="form-label fw-bold">No. Telp</label>
+                        <input type="number" class="form-control" id="telp" value="111122223333" readonly>
+                    </div>
+
+                    <div class="col">
+                        <label class="form-label fw-bold">Email</label>
+                        <input type="email" class="form-control" id="Nama" value="JosephJoestar@gmail.com"
+                            readonly>
                     </div>
                 </div>
 
-                <div class="col">
-                    <label class="form-label fw-bold" >No. Telp</label>
-                    <input type="number" class="form-control" id="telp" value="111122223333" readonly>
+                <div class="container">
+                    <div class="row mx-2">
+                        <table class="table text-white" style="text-shadow: 2px 2px rgb(39, 111, 156);">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">First</th>
+                                    <th scope="col">Last</th>
+                                    <th scope="col">Handle</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>@mdo</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>Jacob</td>
+                                    <td>Thornton</td>
+                                    <td>@fat</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td colspan="2">Larry the Bird</td>
+                                    <td>@twitter</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-
-                <div class="col">
-                    <label class="form-label fw-bold" >Email</label>
-                    <input type="email" class="form-control" id="Nama" value="JosephJoestar@gmail.com" readonly>
-                </div>
             </div>
 
-            <div class="container">
-            <div class="row mx-2">
-                <table class="table text-white" style="text-shadow: 2px 2px rgb(39, 111, 156);">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                      </tr>
-                    </tbody>
-                  </table>
-            </div>
-        </div>
-            </div>
-            
-        </div>
         </div>
     </div>
+</div> --}}
 
 
 
