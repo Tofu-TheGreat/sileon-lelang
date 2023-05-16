@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Barang;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use App\Models\Email;
 
 class BarangController extends Controller
 {
@@ -22,6 +23,12 @@ class BarangController extends Controller
         $barang = Barang::where('id_barang', $id_barang)
             ->delete();
         return redirect()->route('table.databarang');
+    }
+    public function delete_email($name)
+    {
+        $barang = Email::where('name', $name)
+            ->delete();
+        return redirect()->route('show.inbox');
     }
 
     public function ubah_barang($id_barang)
@@ -49,6 +56,7 @@ class BarangController extends Controller
                     "tgl" => $request->tgl,
                     "harga_awal" => $request->harga_awal,
                     "deskripsi_barang" => $request->deskripsi_barang,
+                    "kategori" => $request->kategori,
                     "gambar" => $imageName
                 ]);
         } else {
@@ -57,7 +65,8 @@ class BarangController extends Controller
                     "nama_barang" => $request->nama_barang,
                     "tgl" => $request->tgl,
                     "harga_awal" => $request->harga_awal,
-                    "deskripsi_barang" => $request->deskripsi_barang
+                    "deskripsi_barang" => $request->deskripsi_barang,
+                    "kategori" => $request->kategori
                 ]);
         }
 
@@ -85,6 +94,7 @@ class BarangController extends Controller
             'tgl' => 'required',
             'harga_awal' => 'required',
             'deskripsi_barang' => 'required',
+            'kategori' => 'required',
             'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'check' => 'required'
         ]);
@@ -98,6 +108,7 @@ class BarangController extends Controller
             "tgl" => $request->tgl,
             "harga_awal" => $request->harga_awal,
             "deskripsi_barang" => $request->deskripsi_barang,
+            "kategori" => $request->kategori,
             "gambar" => $imageName
         ]);
         $product->save(); // Finally, save the record.

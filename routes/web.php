@@ -6,9 +6,18 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LelangController;
 use App\Http\Controllers\UserController;
-
+use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Contracts\Mail\Mailable;
+use App\Mail\ContactForm;
+use App\Models\Email;
 
 
 
@@ -57,16 +66,77 @@ Route::get('/ketentuan', function () {
     return view('Users.ketentuan',);
 });
 
+Route::post('/contact', function (Request $request) {
+    $request->validate([
+        'name' => 'required',
+        'email' => 'required',
+        'message' => 'required'
+    ]);
+    $details = Email::create([
+        'name' => $request->name,
+        'email' => $request->email,
+        'message' => $request->message
+    ]);
 
 
+
+    return redirect()->intended('/contact')->with('message', 'Your message has been sent!');
+})->name('emailing');
+
+
+
+Route::get('/forgot-password', function () {
+    return view('res_pas_1');
+})->name('password.request');
+
+Route::post('/forgot-password', function (Request $request) {
+    $request->validate(['email' => 'required|email']);
+
+    $status = Password::sendResetLink(
+        $request->only('email')
+    );
+
+    return $status === Password::RESET_LINK_SENT
+        ? back()->with(['status' => __($status)])
+        : back()->withErrors(['email' => __($status)]);
+})->name('password.email');
+
+Route::get('/reset-password/{token}', function (string $token) {
+    return view('auth.passwords.reset', ['token' => $token]);
+})->name('password.reset');
+
+Route::post('/reset-password', function (Request $request) {
+    $request->validate([
+        'token' => 'required',
+        'email' => 'required|email',
+        'password' => 'required|min:8|confirmed',
+    ]);
+
+    $status = Password::reset(
+        $request->only('email', 'password', 'password_confirmation', 'token'),
+        function (User $user, string $password) {
+            $user->forceFill([
+                'password' => Hash::make($password)
+            ])->setRememberToken(Str::random(60));
+
+            $user->save();
+
+            event(new PasswordReset($user));
+        }
+    );
+
+    return $status === Password::PASSWORD_RESET
+        ? redirect()->route('login')->with('status', __($status))
+        : back()->withErrors(['email' => [__($status)]]);
+})->name('password.update');
 
 Auth::routes();
-
+Route::get('/', [Controller::class, 'lelang_page'])->name('banner');
 Route::get('registerpage_admin', [AdminController::class, 'regis'])->name('regis');
 Route::post('register_admin', [AdminController::class, 'regisaction'])->name('regis.action');
 
 //
-Route::get('/', [AdminController::class, 'login'])->name('login');
+Route::get('/login_user', [AdminController::class, 'login'])->name('login');
 Route::post('login_admin', [AdminController::class, 'loginaction'])->name('login.action');
 Route::get('logout_admin', [AdminController::class, 'logout'])->name('logout.admin');
 
@@ -77,11 +147,13 @@ Route::get('profile', [HomeController::class, 'profile'])->name('profile');
 
 
 Route::get('search', [HomeController::class, 'search'])->name('search.action');
+Route::get('search_filter', [HomeController::class, 'search_filter'])->name('searchfilter.action');
 
 
 
 
-Route::get('register', [UserController::class, 'register'])->name('register.user');
+
+Route::get('register_user', [UserController::class, 'register_user'])->name('register.user');
 Route::get('login', [UserController::class, 'login'])->name('login.user');
 Route::post('register', [UserController::class, 'action_register'])->name('register.action');
 Route::post('login', [UserController::class, 'action_login'])->name('loginuser.action');
@@ -100,6 +172,7 @@ Route::middleware(['auth', 'petugas:Admin,Petugas'])->group(function () {
 
     //User dan Petugas
     Route::get('data_petugas', [HomeController::class, 'data_petugastable'])->name('table.datapetugas');
+    Route::get('inbox', [HomeController::class, 'inbox'])->name('show.inbox');
     Route::get('data_user', [HomeController::class, 'data_usertable'])->name('table.datauser');
     Route::get('tambah_petugas', [HomeController::class, 'tambah'])->name('tambah.petugas');
     Route::get('/ubah_user_page/{id_user}', [HomeController::class, 'ubah_user'])->name('ubah.user');
@@ -119,6 +192,7 @@ Route::middleware(['auth', 'petugas:Admin,Petugas'])->group(function () {
     Route::post('update_barang', [BarangController::class, 'update_barang'])->name('update.barang');
     Route::get('/delete_lelang/{id_lelang}', [LelangController::class, 'delete_lelang'])->name('delete.lelang');
     Route::get('/delete_barang/{id_barang}', [BarangController::class, 'delete_barang'])->name('delete.barang');
+    Route::get('/delete_email/{name}', [BarangController::class, 'delete_email'])->name('delete.email');
     Route::get('/delete_history/{id_history}', [HomeController::class, 'delete_history'])->name('delete.history');
     Route::get('/cetak_pdf_barang', [LelangController::class, 'cetakpdf_barang'])->name('pdf.barang');
     Route::get('/cetak_pdf_pemenang/{id_history}', [LelangController::class, 'cetakpdf_pemenang'])->name('pdf.pemenang');
@@ -126,8 +200,12 @@ Route::middleware(['auth', 'petugas:Admin,Petugas'])->group(function () {
 
 
 Route::middleware(['auth', 'user'])->group(function () {
-    Route::get('/banner', [Controller::class, 'lelang_page'])->name('banner');
+
     Route::get('/detail/{id_lelang}', [LelangController::class, 'detail'])->name('detail');
     Route::post('bid', [LelangController::class, 'bid'])->name('action.bid');
     Route::get('/histori/{id_user}', [HomeController::class, 'data_historyuser'])->name('histori.user');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -28,6 +28,7 @@
                 <th>Tanggal Masuk</th>
                 <th>Harga Awal</th>
                 <th>Deskripsi Barang</th>
+                <th>Kategori</th>
                 <th>Gambar</th>
             </tr>
         </thead>
@@ -38,8 +39,12 @@
                     <td>{{ $i++ }}</td>
                     <td>{{ $p->nama_barang }}</td>
                     <td>{{ $p->tgl }}</td>
-                    <td>{{ $p->harga_awal }}</td>
+                    <td>Rp. {{ $p->harga_awal }}</td>
                     <td>{{ $p->deskripsi_barang }}</td>
+                    <td>{{ $p->kategori == '1' ? 'Elektronik' : '' }}
+                        {{ $p->kategori == '2' ? 'Fashion' : '' }}{{ $p->kategori == '3' ? 'Gadget' : '' }}
+                        {{ $p->kategori == '4' ? 'Vehicle' : '' }}{{ $p->kategori == '5' ? 'Game dan hobi' : '' }}
+                    </td>
                     <td><img src="image_save/{{ $p->gambar }}" height="150px" width="175px" alt=""></td>
                 </tr>
             @endforeach

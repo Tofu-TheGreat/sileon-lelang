@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nama_barang', 255);
             $table->date('tgl');
             $table->unsignedBigInteger('harga_awal');
+            $table->enum('kategori', ['0', '1', '2', '3', '4', '5']);
             $table->string('deskripsi_barang', 255);
             $table->string('gambar', 255);
             $table->timestamps();

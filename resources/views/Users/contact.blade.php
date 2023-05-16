@@ -23,7 +23,7 @@
 
                         <p class="d-flex border-bottom pb-3 mb-4">
                             <strong class="d-inline me-4">Phone:</strong>
-                            <span>xxxx-xxxx-xxxx</span>
+                            <span>0877-8112-7193</span>
                         </p>
 
                         <p class="d-flex border-bottom pb-3 mb-4">
@@ -33,7 +33,8 @@
 
                         <p class="d-flex">
                             <strong class="d-inline me-4">Location:</strong>
-                            <span>1355 Market Street, Downtown San Francisco, California</span>
+                            <span>Jl. Veteran No.1A, RT.005/RW.002, Babakan, Kec. Tangerang, Kota Tangerang, Banten
+                                15118</span>
                         </p>
                     </div>
                 </div>
@@ -58,11 +59,12 @@
                         <h4 class="section-title">Formulir Kontak</h4>
                     </div>
 
-                    <form action="#" method="post" class="custom-form contact-form" role="form">
+                    <form action="{{ route('emailing') }}" method="post" class="custom-form contact-form" role="form">
+                        @csrf
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-12">
                                 <div class="form-floating">
-                                    <input type="text" name="full-name" id="full-name" class="form-control"
+                                    <input type="text" name="name" id="full-name" class="form-control"
                                         placeholder="Full Name" required="">
 
                                     <label for="floatingInput">Nama Lengkap</label>
@@ -78,30 +80,22 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-12 col-12">
-                                <div class="form-floating">
-                                    <input type="text" name="company" id="name" class="form-control"
-                                        placeholder="Name">
+                            <div class="form-floating">
+                                <textarea class="form-control" id="message" name="message" placeholder="Describe message here"></textarea>
 
-                                    <label for="floatingInput">Perusahaan (opsional)</label>
-                                </div>
-
-                                <div class="form-floating">
-                                    <textarea class="form-control" id="message" name="message" placeholder="Describe message here"></textarea>
-
-                                    <label for="floatingTextarea">Tulis pesanmu disini</label>
-                                </div>
+                                <label for="floatingTextarea">Tulis pesanmu disini</label>
                             </div>
-
-                            <div class="col-lg-4 col-12 ms-auto">
-                                <button type="submit" class="form-control">Kirim</button>
-                            </div>
-
                         </div>
-                    </form>
-                </div>
 
+                        <div class="col-lg-4 col-12 ms-auto">
+                            <button type="submit" class="form-control">Kirim</button>
+                        </div>
+
+                </div>
+                </form>
             </div>
+
+        </div>
         </div>
     </section>
     </main>

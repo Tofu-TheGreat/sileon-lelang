@@ -42,7 +42,7 @@
                                                 </td>
                                                 <td class="border-bottom-0">
                                                     <div class="email">
-                                                        <span>{{ $p->penawaran_harga }}</span>
+                                                        <span>Rp. {{ $p->penawaran_harga }}</span>
 
                                                     </div>
                                                 </td>

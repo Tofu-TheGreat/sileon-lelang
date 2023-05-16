@@ -11,6 +11,7 @@
                             <th>Tanggal</th>
                             <th>Harga Awal</th>
                             <th>Deskripsi</th>
+                            <th>Kategori</th>
                             <th>Gambar</th>
                             <th>Opsi</th>
                         </tr>
@@ -21,8 +22,12 @@
                             <tr>
                                 <td>{{ $item->nama_barang }}</td>
                                 <td>{{ $item->tgl }}</td>
-                                <td>{{ $item->harga_awal }}</td>
+                                <td>Rp. {{ $item->harga_awal }}</td>
                                 <td>{{ $item->deskripsi_barang }}</td>
+                                <td>{{ $item->kategori == '1' ? 'Elektronik' : '' }}
+                                    {{ $item->kategori == '2' ? 'Fashion' : '' }}{{ $item->kategori == '3' ? 'Gadget' : '' }}
+                                    {{ $item->kategori == '4' ? 'Vehicle' : '' }}{{ $item->kategori == '5' ? 'Game dan hobi' : '' }}
+                                </td>
                                 <td><img src="image_save/{{ $item->gambar }}" height="150px" width="175px" alt=""></td>
                                 <td>
                                     <a href="/delete_barang/{{ $item->id_barang }}" class="btn btn-danger">Delete</a>

@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function register()
+    public function register_user()
     {
         $data['title'] = 'Register';
         return view('register')->with($data);

@@ -6,6 +6,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SILEON</title>
+    <link rel="icon" href="../../images/logsing.png" type="image/x-icon">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 </head>
@@ -16,6 +18,12 @@
         @if (session('error'))
             <div class="alert  alert-danger alert-dismissible fade show container-fluid" role="alert">
                 {{ session('error') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+        @if (session('status'))
+            <div class="alert  alert-success alert-dismissible fade show container-fluid" role="alert">
+                {{ session('status') }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
@@ -125,8 +133,14 @@
                                     @endif
                                 </div>
                                 <div class="text-center">
-                                    <p>Don't have account? <a href="{{ route('register.user') }}"
-                                            style="text-decoration: none">Sign Up</a>
+                                    <p>Don't have account? <a href="/register_user" style="text-decoration: none">Sign
+                                            Up</a>
+                                    </p>
+
+                                </div>
+                                <div class="text-center">
+                                    <p><a href="/forgot-password" style="text-decoration: none">Forgot your passwords?
+                                        </a>
                                     </p>
 
                                 </div>

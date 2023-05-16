@@ -25,7 +25,7 @@
                                 {{-- <td>{{ $item->id_user }}</td> --}}
                                 <td>{{ $item->email }}</td>
                                 <td>{{ $item->created_at }}</td>
-                                <td>{{ $item->penawaran_harga }}</td>
+                                <td>Rp. {{ $item->penawaran_harga }}</td>
                                 <td>
                                     @if ($item->penawaran_harga == $item->harga_awal)
                                         <a href="/cetak_pdf_pemenang/{{ $item->id_history }}" class="btn btn-primary">Cetak

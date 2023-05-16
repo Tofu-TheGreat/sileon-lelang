@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Barang;
+use App\Models\Email;
 use App\Models\History;
 use Illuminate\Support\Facades\DB;
 use App\Models\Petugas;
@@ -14,11 +15,29 @@ use App\Models\Lelang;
 class HomeController extends Controller
 {
 
+    public function inbox()
+    {
+        $data = [
+            'title' => 'Home',
+            'subTitle' => 'inbox'
+        ];
+
+        $inbox = Email::select('*')
+            ->get();
+        $inboxcount = $inbox->count();
+        return view('Admin.inbox', compact('inbox', 'inboxcount'))->with($data);
+    }
+
+
     public function __construct()
     {
         $this->middleware('auth');
     }
+    public function index()
+    {
 
+        return view('login', ['title' => 'a', 'subTitle' => 'b']);
+    }
     public function admin_home()
     {
         $data = [
@@ -196,7 +215,7 @@ class HomeController extends Controller
                 'nama_lengkap' => $request->nama_lengkap,
                 'email' => $request->email,
                 'username' => $request->username,
-                'password' => Hash::make($request->password),
+                'password' => $request->password,
                 'level' => $request->level,
             ]);
         if ($request->level == 'User') {
@@ -229,6 +248,19 @@ class HomeController extends Controller
     {
         if ($request->has('search')) {
             $lelang = Barang::where('nama_barang', 'like', '%' . $request->search . '%')
+                ->join('tb_lelang', 'tb_lelang.id_barang', '=', 'tb_barang.id_barang')
+                ->get();
+        } else {
+            $lelang = Barang::all();
+        }
+
+        return view('Users.index', ['lelang' => $lelang]);
+    }
+    public function search_filter(Request $request)
+    {
+        if ($request->has('kategori')) {
+            $kategori = $request->kategori;
+            $lelang = Barang::whereIn('kategori', $kategori)
                 ->join('tb_lelang', 'tb_lelang.id_barang', '=', 'tb_barang.id_barang')
                 ->get();
         } else {

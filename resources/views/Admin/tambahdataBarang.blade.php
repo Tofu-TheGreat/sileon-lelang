@@ -24,6 +24,17 @@
                     <textarea name="deskripsi_barang" class="form-control" id="deskBarang" rows="3"></textarea>
                 </div>
                 <div class="mb-3">
+                    <label for="KategoriBarang" class="form-label">Kategori Barang</label>
+                    <select class="form-select" name="kategori" aria-label="Default select example">
+                        <option>Select one</option>
+                        <option value="1">Elektronik</option>
+                        <option value="2">Fashion</option>
+                        <option value="3">Gadget</option>
+                        <option value="4">Vehicle</option>
+                        <option value="5">Game dan hobi</option>
+                    </select>
+                </div>
+                <div class="mb-3">
                     <label for="GambarBarang" class="form-label">Gambar</label>
                     <input type="file" name="gambar" class="form-control" id="GambarBarang">
                 </div>
